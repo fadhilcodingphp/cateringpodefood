@@ -138,6 +138,7 @@ function TambahPesanan($tambahPesanan)
     $ID_Pelanggan = htmlspecialchars($tambahPesanan["ID_Pelanggan"]);
     $Tgl_Kirim = htmlspecialchars($tambahPesanan["Tgl_Kirim"]);
     $Waktu_Kirim = htmlspecialchars($tambahPesanan["Waktu_Kirim"]);
+    $Jenis_Acara = htmlspecialchars($tambahPesanan["Jenis_Acara"]);
     $Nama_Penerima = htmlspecialchars($tambahPesanan["Nama_Penerima"]);
     $NoTelp_Penerima = htmlspecialchars($tambahPesanan["NoTelp_Penerima"]);
     $Alamat = htmlspecialchars($tambahPesanan["Alamat"]);
@@ -153,6 +154,7 @@ function TambahPesanan($tambahPesanan)
                                            NOW(), 
                                            '$Tgl_Kirim', 
                                            '$Waktu_Kirim', 
+                                           '$Jenis_Acara', 
                                            '$Nama_Penerima', 
                                            '$NoTelp_Penerima', 
                                            '$Alamat', 

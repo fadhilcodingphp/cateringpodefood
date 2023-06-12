@@ -2,16 +2,80 @@
 require 'custFunction.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta content="" name="keywords" />
+<meta content="" name="description" />
 
-<head>
-  <meta charset="utf-8" />
-  <title>Home | Pode Food</title>
+<!-- Favicon -->
+<link href="img/favicon.ico" rel="icon" />
 
-  <?php
-  include 'header.php';
-  ?>
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Quicksand:wght@600;700&display=swap" rel="stylesheet" />
+
+<!-- Icon Font Stylesheet -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+<!-- Libraries Stylesheet -->
+<link href="lib/animate/animate.min.css" rel="stylesheet" />
+<link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+
+<!-- Customized Bootstrap Stylesheet -->
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+
+<!-- Template Stylesheet -->
+<link href="css/scss.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Spinner Start -->
+  <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <!-- Spinner End -->
+
+  <!-- Navbar Start -->
+  <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-4 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+    <a href="Home.php" class="navbar-brand p-4">
+      <img class="img-fluid me-3" src="img/icon/logo.jpg" alt="Icon" />
+      <h1 class="m-0 text-primary">Pode Food Makassar</h1>
+    </a>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse py-4 py-lg-0" id="navbarCollapse">
+      <div class="navbar-nav ms-auto">
+        <a href="Login.php" class="btn btn-primary">User<i class="fa fa-arrow-right ms-3"></i></a>&nbsp &nbsp
+        <a href="Admin/AdminLogin.php" class="btn btn-danger">Admin<i class="fa fa-arrow-right ms-3"></i></a>&nbsp &nbsp
+        <a href="Pemilik/PemilikLogin.php" class="btn btn-dark">Pemilik<i class="fa fa-arrow-right ms-3"></i></a>
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar End -->
+
+
+  <div class="hero" style="background-image: url('img/beranda.jpg');"></div>
+  <br>
+  <div id="caraPesan" class="container-xxl py-5">
+    <div class="container">
+      <div class="row g-5 mb-5 align-items-end wow fadeInUp" data-wow-delay="0.1s">
+        <div class="col-lg-8">
+          <h1 class="display-5 mb-0">
+            Berbagai menu yang tersedia di
+            <span class="text-primary">Pode Food Makassar</span>
+          </h1>
+        </div>
+      </div>
+      <div class="row g-4">
+
+      </div>
+    </div>
+  </div>
   <!-- Header Start -->
   <div style="width:60%;" class="container">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -20,12 +84,11 @@ require 'custFunction.php';
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 5"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 6"></button>
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="img/car1.png" class="d-block w-100">
-        </div>
-        <div class="carousel-item">
           <img src="img/car2.png" class="d-block w-100">
         </div>
         <div class="carousel-item">
@@ -33,6 +96,15 @@ require 'custFunction.php';
         </div>
         <div class="carousel-item">
           <img src="img/car4.png" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="img/car3.png" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="img/carousel-2.png" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+          <img src="img/carousel-3.png" class="d-block w-100">
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -46,89 +118,12 @@ require 'custFunction.php';
     </div>
   </div>
   <!-- Header End -->
-  <!-- About Start -->
-  <div id="about" class="container-xxl py-5">
-    <div class="container">
-      <div class="row g-5">
-        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-          <p><span class="text-primary me-2">#</span>Tentang Kami</p>
-          <h1 class="display-5 mb-4">
-            Kenapa memilih
-            <span class="text-primary">Pode Food Makassar</span> untuk catering?
-          </h1>
-          <p class="mb-4">
-            Pode Food Makassar sudah berdiri sejak 2016 dan sudah dipercaya oleh berbagai organisasi, perusahaan dan
-            perorangan untuk menangani catering harian sampai acara besar.
-          </p>
-          <h5 class="mb-3"> <i class="far fa-check-circle text-primary me-3"></i> Terjangkau </h5>
-          <h5 class="mb-3"> <i class="far fa-check-circle text-primary me-3"></i> Kualitas Terjamin </h5>
-          <h5 class="mb-3"> <i class="far fa-check-circle text-primary me-3"></i> Pilihan Paket Beragam </h5>
-          <h5 class="mb-3"> <i class="far fa-check-circle text-primary me-3"></i> Custom Pesanan Sesuai Keperluan dan Budget </h5>
-        </div>
-        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-          <div class="img-border">
-            <img class="img-fluid" src="img/logo.png" alt="" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- About End -->
-
-  <!-- Contact Start -->
-  <div id="kontak" class="container-xxl py-4">
-    <div class="container">
-      <div class="row g-4 mb-5">
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-          <div class="h-100 bg-dark d-flex align-items-center p-5">
-            <div class="btn-lg-square bg-black flex-shrink-0">
-              <i class="fa fa-phone-alt text-primary"></i>
-            </div>
-            <div class="ms-4">
-              <p class="mb-2 text-light">
-                <span class="text-primary me-2">#</span>Telepon
-              </p>
-              <h5 class="text-light mb-0">082188289569</h5>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-          <div class="h-100 bg-dark d-flex align-items-center p-5">
-            <div class="btn-lg-square bg-black flex-shrink-0">
-              <i class="fa fa-whatsapp text-primary"></i>
-            </div>
-            <div class="ms-4">
-              <p class="mb-2 text-light">
-                <span class="text-primary me-2">#</span>Whatsapp
-              </p>
-              <h5 class="text-light mb-0">082188289569</h5>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-          <div class="h-100 bg-dark d-flex align-items-center p-5">
-            <div class="btn-lg-square bg-black flex-shrink-0">
-              <i class="fa fa-instagram text-primary"></i>
-            </div>
-            <div class="ms-4">
-              <p class="mb-2 text-light">
-                <span class="text-primary me-2">#</span>Instagram
-              </p>
-              <h5 class="text-light mb-0">podefood</h5>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Contact End -->
 
   <!-- Cara Pesan -->
   <div id="caraPesan" class="container-xxl py-5">
     <div class="container">
       <div class="row g-5 mb-5 align-items-end wow fadeInUp" data-wow-delay="0.1s">
         <div class="col-lg-8">
-          <p><span class="text-primary me-2">#</span>Panduan Pemesanan</p>
           <h1 class="display-5 mb-0">
             Cara memesan lewat website
             <span class="text-primary">Pode Food Makassar</span>

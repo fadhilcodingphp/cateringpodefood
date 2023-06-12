@@ -120,13 +120,27 @@ if (isset($_POST["submit"])) {
               </div>
               <div class="form-group row">
                 <div class="col-md-12 mb-3">
+                  <label for="Jenis_Acara" class="text-black mb-1">Jenis Acara<span class="text-danger">*</span></label>
+                  <select class="form-select" aria-label="Default select example" name="Jenis_Acara">
+                    <option>--</option>
+                    <option>Pesta Pernikahan</option>
+                    <option>Ulang Tahun</option>
+                    <option>Syukuran</option>
+                    <option>Acara Kantoran</option>
+                    <option>Konsumsi untuk Karyawan Kantor</option>
+                    <option>Lainnya</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-12 mb-3">
                   <label for="Nama_Penerima" class="text-black mb-1">Nama Penerima Pesanan<span class="text-danger">*</span></label>
                   <input type="text" class="form-control" id="Nama_Penerima" name="Nama_Penerima">
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-12 mb-3">
-                  <label for="NoTelp_Penerima" class="text-black mb-1">Nomor Telefon Penerima<span class="text-danger">*</span></label>
+                  <label for="NoTelp_Penerima" class="text-black mb-1">Nomor Telepon Penerima<span class="text-danger">*</span></label>
                   <input type="text" class="form-control" id="NoTelp_Penerima" name="NoTelp_Penerima">
                 </div>
               </div>
