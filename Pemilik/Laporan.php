@@ -93,6 +93,7 @@ if (isset($_POST['btnTampil'])) {
                               <th scope="col">No.</th>
                               <th scope="col">ID Psn</th>
                               <th scope="col">Tanggal Pesan</th>
+                              <th scope="col">Jenis Acara</th>
                               <th scope="col">Nama Customer</th>
                               <th scope="col">Status </th>
                               <th scope="col">Nama Produk</th>
@@ -112,6 +113,7 @@ if (isset($_POST['btnTampil'])) {
                                  <td><?= $i ?></td>
                                  <td scope="row"><?php echo $pecah['ID_Pesanan']; ?></td>
                                  <td scope="row"><?php echo $pecah['Tgl_Pesan']; ?></td>
+                                 <td scope="row"><?php echo $pecah['Jenis_Acara']; ?></td>
                                  <td scope="row"><?php echo $pecah['Nama_Pelanggan']; ?></td>
                                  <td scope="row">
                                     <?php
