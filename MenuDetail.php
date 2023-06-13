@@ -64,14 +64,14 @@ if (isset($_POST["submit"])) {
           <h1 class="display-5 fw-bolder">
             <?= $ubahProduk['Nama_Produk'] ?>
           </h1>
-          <div class="fs-5 mb-5">
-            <span><?= 'Rp. ' . number_format($ubahProduk['Harga'], 2, ',', '.'); ?></span>
-          </div>
           <p class="lead">
             <i class="bi-clock me-1"></i>
             <span><?= "Ketahanan Produk: " . $ubahProduk['Ketahanan_Produk'] ?></span><br>
             <?= $ubahProduk['Keterangan'] ?>
           </p>
+          <div class="fs-5 mb-5">
+            <h3><?= 'Rp. ' . number_format($ubahProduk['Harga'], 2, ',', '.'); ?></h3>
+          </div>
           <div class="d-flex">
             <form action="" method="post">
               <div class="input-group mb-3" style="max-width: 120px;">

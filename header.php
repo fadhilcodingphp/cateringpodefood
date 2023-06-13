@@ -83,6 +83,7 @@
                             <a href="#" class="nav-item nav-link">Menu</a>
                         </a>
                         <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                            <a href="Menupaket.php" class="dropdown-item">Paket Catering</a>
                             <a href="Menulauk.php" class="dropdown-item">Aneka Lauk</a>
                             <a href="Menunasi.php" class="dropdown-item">Paket Nasi Lauk</a>
                             <a href="Menurice.php" class="dropdown-item">Paket Rice Bowl</a>
@@ -114,6 +115,7 @@
                             <a href="#" class="nav-item nav-link">Menu</a>
                         </a>
                         <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                            <a href="Menupaket.php" class="dropdown-item">Paket Catering</a>
                             <a href="Menulauk.php" class="dropdown-item">Aneka Lauk</a>
                             <a href="Menunasi.php" class="dropdown-item">Paket Nasi Lauk</a>
                             <a href="Menurice.php" class="dropdown-item">Paket Rice Bowl</a>

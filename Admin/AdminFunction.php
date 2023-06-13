@@ -108,8 +108,8 @@ function ubahProduk($produk)
     //ambil data dari tiap elemen form
     $ID_Produk = htmlspecialchars($produk["ID_Produk"]);
     $ID_Kategori = htmlspecialchars($produk["ID_Kategori"]);
-    $Nama_produk = htmlspecialchars($produk["Nama_produk"]);
-    $Ketahanan_produk = htmlspecialchars($produk["Ketahanan_produk"]);
+    $Nama_produk = htmlspecialchars($produk["Nama_Produk"]);
+    $Ketahanan_produk = htmlspecialchars($produk["Ketahanan_Produk"]);
     $Harga = htmlspecialchars($produk["Harga"]);
     $Keterangan = htmlspecialchars($produk["Keterangan"]);
     // $Gambar = htmlspecialchars($produk["Gambar"]);
@@ -124,10 +124,9 @@ function ubahProduk($produk)
     }
     //query ubah data
     $ubahproduk = "UPDATE produk, kategori_produk SET
-                    kategori_produk.ID_Kategori = '$ID_Kategori',
-                    produk.Nama_produk = '$Nama_produk', 
+                    produk.Nama_Produk = '$Nama_produk', 
                     produk.Gambar = '$Gambar', 
-                    produk.Ketahanan_produk = '$Ketahanan_produk',
+                    produk.Ketahanan_Produk = '$Ketahanan_produk',
                     produk.Harga = $Harga, 
                     produk.Keterangan = '$Keterangan' 
                     WHERE  produk.ID_Kategori = kategori_produk.ID_Kategori
