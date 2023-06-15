@@ -5,12 +5,12 @@ if (!isset($_SESSION['admin'])) {
    exit;
 }
 //cek apakah tombol submit sudah ditekan atau belum
-if (isset($_POST["tambahProduk"])) {
+if (isset($_POST["tambahPaket"])) {
    //cek apakah data berhasil ditambahkan atau tidak
-   if (tambahProduk($_POST) > 0) {
+   if (tambahPaket($_POST) > 0) {
       echo "
         <script>
-        document.location.href='Produk.php';
+        document.location.href='Produkcatering.php';
         </script>
         ";
    } else {
@@ -34,19 +34,19 @@ if (isset($_POST["tambahProduk"])) {
    ?>
    <main id="main" class="main">
       <div class="pagetitle">
-         <h1>Tambah Produk</h1>
+         <h1>Tambah Produk Paket</h1>
          <nav>
             <ol class="breadcrumb">
                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                <li class="breadcrumb-item"><a href="Produk.php">Produk</a></li>
-               <li class="breadcrumb-item active">Tambah Produk</li>
+               <li class="breadcrumb-item active">Tambah Produk Paket</li>
             </ol>
          </nav>
       </div>
       <section class="section">
          <div class="card">
             <div class="card-body">
-               <h5 class="card-title">Tambah Produk</h5>
+               <h5 class="card-title">Tambah Produk Paket</h5>
                <form class="row g-3" action="" method="post" enctype="multipart/form-data">
                   <div class="col-12">
                      <label for="Nama_Produk" class="form-label">Nama Produk</label>
@@ -75,6 +75,18 @@ if (isset($_POST["tambahProduk"])) {
                      <input type="text" name="Harga" class="form-control" id="Harga" required>
                   </div>
                   <div class="col-12">
+                     <label for="Paket_A" class="form-label">Paket 1</label>
+                     <input type="text" name="Paket_A" class="form-control" id="Paket_A" required>
+                  </div>
+                  <div class="col-12">
+                     <label for="Paket_B" class="form-label">Paket 2</label>
+                     <input type="text" name="Paket_B" class="form-control" id="Paket_B" required>
+                  </div>
+                  <div class="col-12">
+                     <label for="Paket_C" class="form-label">Paket 3</label>
+                     <input type="text" name="Paket_C" class="form-control" id="Paket_C" required>
+                  </div>
+                  <div class="col-12">
                      <label for="Keterangan" class="form-label">Keterangan Produk</label>
                      <input type="text" name="Keterangan" class="form-control" id="Keterangan" required>
                   </div>
@@ -83,7 +95,7 @@ if (isset($_POST["tambahProduk"])) {
                      <input type="file" name="Gambar" class="form-control" id="Gambar">
                   </div>
                   <div class="text-center">
-                     <button type="submit" name="tambahProduk" class="btn btn-primary">Tambah Produk</button>
+                     <button type="submit" name="tambahPaket" class="btn btn-primary">Tambah Produk</button>
                   </div>
                </form>
             </div>

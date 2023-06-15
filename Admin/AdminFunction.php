@@ -97,11 +97,39 @@ function tambahProduk($produk)
     }
 
     //query insert data
-    $inputProduk = "INSERT INTO produk VALUES ('', '$ID_Kategori','$Nama_produk', '$Ketahanan_produk', '$Harga', '$Keterangan', '$Gambar')";
+    $inputProduk = "INSERT INTO produk VALUES ('', '$ID_Kategori','$Nama_produk', '$Ketahanan_produk', '$Harga', '$Keterangan', '', '', '', '$Gambar')";
     mysqli_query($conn, $inputProduk);
 
     return mysqli_affected_rows($conn);
 }
+
+//Produk
+function tambahPaket($produkpaket)
+{
+    global $conn;
+    //ambil data dari tiap elemen form
+    $ID_Kategori = htmlspecialchars($produkpaket["ID_Kategori"]);
+    $Nama_produk = htmlspecialchars($produkpaket["Nama_Produk"]);
+    $Ketahanan_produk = htmlspecialchars($produkpaket["Ketahanan_Produk"]);
+    $Harga = htmlspecialchars($produkpaket["Harga"]);
+    $Paket_A = htmlspecialchars($produkpaket["Paket_A"]);
+    $Paket_B = htmlspecialchars($produkpaket["Paket_B"]);
+    $Paket_C = htmlspecialchars($produkpaket["Paket_C"]);
+    $Keterangan = htmlspecialchars($produkpaket["Keterangan"]);
+    //upload gambar
+    $Gambar = uploadGambar();
+    if (!$Gambar) {
+        return false;
+    }
+
+    //query insert data
+    $inputProduk = "INSERT INTO produk VALUES ('', '$ID_Kategori','$Nama_produk', '$Ketahanan_produk', '$Harga', '$Keterangan', '$Paket_A', '$Paket_B', '$Paket_C', '$Gambar')";
+    mysqli_query($conn, $inputProduk);
+
+    return mysqli_affected_rows($conn);
+}
+
+
 function ubahProduk($produk)
 {
     global $conn;

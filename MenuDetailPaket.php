@@ -47,12 +47,12 @@ if (isset($_POST["submit"])) {
         <h2>Detail Produk</h2>
       </div>
       <div class="row align-items-center">
-        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
           <div class="img-border2">
             <img class="img-fluid" src="assets/img/<?php echo $ubahProduk['Gambar']; ?>" alt="" />
           </div>
         </div>
-        <div class="col-md-6 col-lg-5 ms-3 mt-5 ">
+        <div class="col-md-6 col-lg-7 ms-3 mt-5 ">
           <div class="fs-6">
             <i class="bi-clock me-1"></i>
             <span><?= $ubahProduk['Ketahanan_Produk'] . ' | ' ?></span>
@@ -64,13 +64,19 @@ if (isset($_POST["submit"])) {
           <h1 class="display-5 fw-bolder">
             <?= $ubahProduk['Nama_Produk'] ?>
           </h1>
-          <?= $ubahProduk['Keterangan'] ?>
           <p class="lead">
             <i class="bi-clock me-1"></i>
             <span><?= "Ketahanan Produk: " . $ubahProduk['Ketahanan_Produk'] ?></span><br>
+            <?= $ubahProduk['Keterangan'] ?>
+          </p>
+          <p class="lead">
+            Detail Paket : <br>
+          <h6><?= $ubahProduk['Paket_A'] ?></h6>
+          <h6><?= $ubahProduk['Paket_B'] ?></h6>
+          <h6><?= $ubahProduk['Paket_C'] ?></h6>
           </p>
           <div class="fs-5 mb-5">
-            <h3><?= 'Rp. ' . number_format($ubahProduk['Harga'], 2, ',', '.'); ?></h3>
+            <h3><?= 'Hanya <u>Rp. ' . number_format($ubahProduk['Harga'], 2, ',', '.'); ?></h3>
           </div>
           <div class="d-flex">
             <form action="" method="post">

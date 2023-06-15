@@ -33,6 +33,7 @@
                     <a href="Produklauk.php" class="dropdown-item">Aneka Lauk</a>
                     <a href="Produknasi.php" class="dropdown-item">Paket Nasi Lauk</a>
                     <a href="Produkrice.php" class="dropdown-item">Paket Rice Bowl</a>
+                    <a href="Produkcatering.php" class="dropdown-item">Paket Catering</a>
                 </div>
             </div>
             <li class="nav-item"> <a class="nav-link collapsed" href="Pesanan.php"> <i class="bi bi-cart-check-fill"></i> <span>Pesanan</span> </a></li>
