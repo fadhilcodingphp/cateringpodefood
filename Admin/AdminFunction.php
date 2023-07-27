@@ -363,6 +363,7 @@ if (isset($_POST['loginadmin'])) {
         } elseif ($role == 'user') {
             $_SESSION['log'] = 'Logged';
             $_SESSION['roleuser'] = 'User';
+            $_SESSION["ID_Pelanggan"] = $username;
             header('location:Homepage.php');
         } else {
             $error = true;

@@ -1,6 +1,6 @@
 <?php
 require "custFunction.php";
-if (!isset($_SESSION["login"])) {
+if (!isset($_SESSION["roleuser"]) && !isset($_SESSION["ID_Pelanggan"])) {
     header("Location: login.php");
     exit;
 } else {

@@ -1,7 +1,7 @@
 <?php
 require "custFunction.php";
 
-if (!isset($_SESSION["roleuser"])) {
+if (!isset($_SESSION["roleuser"]) && !isset($_SESSION["ID_Pelanggan"])) {
   header("Location: login.php");
   exit;
 }
@@ -101,7 +101,7 @@ if (isset($_POST["submit"])) {
         <div class="col-md-6">
           <div class="row mt-0">
             <div class="col-md-4">
-              <a href="Menu.php" class="btn btn-outline-primary py-1 btn-block">Lanjutkan Belanja</a>
+              <a href="MenuKategoriDetail.php?id=KPC001" class="btn btn-outline-primary py-1 btn-block">Lanjutkan Belanja</a>
             </div>
           </div>
         </div>
