@@ -1,7 +1,7 @@
 <?php
 require 'PemilikFunction.php';
-if (!isset($_SESSION['pemilik'])) {
-   header("Location: PemilikLogin.php");
+if (!isset($_SESSION['rolepemilik'])) {
+   header("Location: ../Login.php");
    exit;
 }
 $awal = $_GET['awal'];

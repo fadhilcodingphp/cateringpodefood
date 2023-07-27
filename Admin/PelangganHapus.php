@@ -1,9 +1,5 @@
 <?php
 require 'AdminFunction.php';
-if ( !isset($_SESSION['admin']) ) {
-   header("Location: AdminLogin.php");
-   exit;
-}
 $conn->query("DELETE FROM pelanggan WHERE ID_Pelanggan='$_GET[id]'");
 if (hapus() > 0) {
     echo "
@@ -20,4 +16,3 @@ if (hapus() > 0) {
         </script>
         ";
 }
-?>

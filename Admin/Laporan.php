@@ -1,9 +1,5 @@
 <?php
 require 'AdminFunction.php';
-if (!isset($_SESSION['admin'])) {
-   header("Location: AdminLogin.php");
-   exit;
-}
 $conn = new mysqli("localhost", "root", "", "podefood");
 $awalTgl = "";
 $akhirTgl = "";

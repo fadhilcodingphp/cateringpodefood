@@ -1,9 +1,9 @@
 <?php
 require 'AdminFunction.php';
-if (!isset($_SESSION['admin'])) {
-   header("Location: AdminLogin.php");
-   exit;
-}
+//ambil data di URL
+$id = $_GET["id"];
+// query data mhs berdasarkan id
+$ubah = query("SELECT * FROM kategori_produk WHERE ID_Kategori = '$id'")[0];
 ?>
 <html lang="en">
 
@@ -16,11 +16,11 @@ if (!isset($_SESSION['admin'])) {
    ?>
    <main id="main" class="main">
       <div class="pagetitle">
-         <h1>Produk Aneka Lauk</h1>
+         <h1>Produk <?= $ubah['Nama_Kategori'] ?></h1>
          <nav>
             <ol class="breadcrumb">
                <li class="breadcrumb-item"><a href="Dashboard.php">Home</a></li>
-               <li class="breadcrumb-item active">Produk Aneka Lauk</li>
+               <li class="breadcrumb-item active">Produk <?= $ubah['Nama_Kategori'] ?></li>
             </ol>
          </nav>
       </div>
@@ -30,7 +30,7 @@ if (!isset($_SESSION['admin'])) {
             <div class="col-lg-12">
                <div class="card">
                   <div class="card-body">
-                     <h5 class="card-title">Produk Aneka Lauk</h5>
+                     <h5 class="card-title">Produk <?= $ubah['Nama_Kategori'] ?></h5>
                      <a class="btn btn-primary" href="ProdukTambah.php" role="button">Tambah Produk</a>
                      <table class="table datatable">
                         <thead>
@@ -44,8 +44,8 @@ if (!isset($_SESSION['admin'])) {
                            </tr>
                         </thead>
                         <tbody>
-                           <?php $ambil = mysqli_query($conn, "SELECT * FROM produk
-                                                               WHERE produk.ID_Kategori = 'KPC001'"); ?>
+                           <?php $ambil = mysqli_query($conn, "SELECT * FROM produk, kategori_produk
+                                                               WHERE produk.ID_Kategori = '$id'"); ?>
                            <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
                               <tr>
                                  <td><?= $i ?></td>

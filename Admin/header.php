@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION['roleadmin'])) {
+    header("Location: ../Login.php");
+    exit;
+}
+?>
 <meta name="robots" content="noindex, nofollow">
 <meta content="" name="description">
 <meta content="" name="keywords">
@@ -20,7 +26,7 @@
         <!-- logo di header -->
         <div class="d-flex align-items-center justify-content-between"> <a href="Dashboard.php" class="logo d-flex align-items-center"> <img src="assets/img/logo.png" alt=""> <span class="d-none d-lg-block">Admin</span> </a> <i class="bi bi-list toggle-sidebar-btn"></i></div>
         <div class="header-nav ms-auto"> <a href="Profile.php" class="nav-link d-flex"></a></div>
-        <div class="d-flex justify-content-end"> <a href="adminlogout.php" class="nav-link d-flex"> <button type="button" class="btn btn-outline-danger">Logout</button> </a></div>
+        <div class="d-flex justify-content-end"> <a href="../Logout.php" class="nav-link d-flex"> <button type="button" class="btn btn-outline-danger">Logout</button> </a></div>
     </header>
     <!-- sidebar -->
     <aside id="sidebar" class="sidebar">
@@ -30,10 +36,10 @@
             <div class="nav-item-dropdown">
                 <li class="nav-item-dropdown"> <a class="nav-link collapsed" href="Produk.php"> <i class="bi bi-cart-fill"></i> <span>Produk</span> </a></li>
                 <div class="dropdown container">
-                    <a href="Produklauk.php" class="dropdown-item">Aneka Lauk</a>
-                    <a href="Produknasi.php" class="dropdown-item">Paket Nasi Lauk</a>
-                    <a href="Produkrice.php" class="dropdown-item">Paket Rice Bowl</a>
-                    <a href="Produkcatering.php" class="dropdown-item">Paket Catering</a>
+                    <?php $ambil = mysqli_query($conn, "SELECT * FROM kategori_produk"); ?>
+                    <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
+                        <a href="ProdukKategoriDetail.php?id=<?= $pecah['ID_Kategori']; ?>" class="dropdown-item"><?= $pecah['Nama_Kategori']; ?></a>
+                    <?php } ?>
                 </div>
             </div>
             <li class="nav-item"> <a class="nav-link collapsed" href="Pesanan.php"> <i class="bi bi-cart-check-fill"></i> <span>Pesanan</span> </a></li>

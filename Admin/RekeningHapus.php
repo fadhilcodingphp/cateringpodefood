@@ -1,9 +1,5 @@
 <?php
 require 'AdminFunction.php';
-if ( !isset($_SESSION['admin']) ) {
-   header("Location: AdminLogin.php");
-   exit;
-}
 $conn->query("DELETE FROM rekening WHERE ID_Rekening='$_GET[id]'");
 if (hapus() > 0) {
     echo "
@@ -12,7 +8,7 @@ if (hapus() > 0) {
         document.location.href='Rekening.php';
         </script>
         ";
-}else {
+} else {
     echo "
         <script>
         alert('Data Gagal Dihapus');
@@ -20,4 +16,3 @@ if (hapus() > 0) {
         </script>
         ";
 }
-?>

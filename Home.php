@@ -50,9 +50,7 @@ require 'custFunction.php';
     </button>
     <div class="collapse navbar-collapse py-4 py-lg-0" id="navbarCollapse">
       <div class="navbar-nav ms-auto">
-        <a href="Login.php" class="btn btn-primary">User<i class="fa fa-arrow-right ms-3"></i></a>&nbsp &nbsp
-        <a href="Admin/AdminLogin.php" class="btn btn-danger">Admin<i class="fa fa-arrow-right ms-3"></i></a>&nbsp &nbsp
-        <a href="Pemilik/PemilikLogin.php" class="btn btn-dark">Pemilik<i class="fa fa-arrow-right ms-3"></i></a>
+        <a href="Login.php" class="btn btn-primary">Login<i class="fa fa-arrow-right ms-3"></i></a>&nbsp &nbsp
       </div>
     </div>
   </nav>

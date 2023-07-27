@@ -72,10 +72,10 @@ function daftar($daftar)
         echo "<script>alert('Username yang dipilih sudah terdaftar')</script>";
         return false;
     }
-    //enkripsi password
-    $password = password_hash($password, PASSWORD_DEFAULT);
+    // //enkripsi password
+    // $password = password_hash($password, PASSWORD_DEFAULT);
     //tambah user baru ke database
-    mysqli_query($conn, "INSERT INTO pelanggan VALUES ('', '$username', '$Nama_Pelanggan', '$password' , '$password2', '$Telepon', '$Email', '$Institusi', '')");
+    mysqli_query($conn, "INSERT INTO pelanggan VALUES ('', '$username', '$Nama_Pelanggan', '$password' , '$password2', '$Telepon', '$Email', '$Institusi', '', 'user')");
     return mysqli_affected_rows($conn);
 }
 

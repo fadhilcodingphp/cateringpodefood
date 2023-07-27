@@ -1,9 +1,5 @@
 <?php
 require 'AdminFunction.php';
-if (!isset($_SESSION['admin'])) {
-   header("Location: AdminLogin.php");
-   exit;
-}
 $awal = $_GET['awal'];
 
 $akhir = $_GET['akhir'];

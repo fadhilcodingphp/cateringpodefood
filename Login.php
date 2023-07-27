@@ -1,27 +1,5 @@
 <?php
-if (isset($_SESSION["login"])) {
-  header("Location: Homepage.php");
-  exit;
-}
-require 'custFunction.php';
-if (isset($_POST["login"])) {
-  $username = $_POST["ID_Pelanggan"];
-  $password = $_POST["Password"];
-  //cek username
-  $result = mysqli_query($conn, "SELECT * FROM pelanggan WHERE ID_Pelanggan='$username'");
-  if (mysqli_num_rows($result) == 1) {
-    //cek password
-    $row = mysqli_fetch_assoc($result);
-    if (password_verify($password, $row["Password"])) {
-      //set session
-      $_SESSION["login"] = true;
-      $_SESSION["ID_Pelanggan"] = $username;
-      header("Location: Homepage.php");
-      exit;
-    }
-    $error = true;
-  }
-}
+require 'Admin/AdminFunction.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,25 +55,25 @@ if (isset($_POST["login"])) {
         <div class="row d-flex justify-content-center">
           <div class="col-lg-8">
             <h2 class="fw-bold mb-5">Log In</h2>
-            <?php if (isset($error)) : ?>
-              <p class="text-danger">Username/Password salah</p>
-            <?php endif; ?>
-            <form action="" method="post">
-              <div class="row g-3">
+            <form class="row g-3 needs-validation" method="post" role="form">
+              <div class=" row g-3">
                 <div class="col-12">
                   <div class="form-floating">
                     <input name="ID_Pelanggan" id="ID_Pelanggan" type="text" class="form-control bg-light border-0" id="subject" placeholder="Subject" required />
                     <label for="ID_Pelanggan">Username*</label>
                   </div>
                 </div>
-                <div class="col-12">
+                <div class="col-12 mt-2">
                   <div class="form-floating">
                     <input name="Password" id="Password" type="password" class="form-control bg-light border-0" id="subject" placeholder="Subject" required />
                     <label for="Password">Password*</label>
                   </div>
                 </div>
-                <div class="col-12">
-                  <button class="btn btn-primary w-100 py-3" type="submit" name="login">
+                <?php if (isset($error)) : ?>
+                  <p class="text-danger">Username/Password salah</p>
+                <?php endif; ?>
+                <div class="col-12 mt-2">
+                  <button class="btn btn-primary w-100 py-3" type="submit" name="loginadmin">
                     Masuk
                   </button>
                 </div>
@@ -122,7 +100,6 @@ if (isset($_POST["login"])) {
   <script src="lib/counterup/counterup.min.js"></script>
   <script src="lib/owlcarousel/owl.carousel.min.js"></script>
   <script src="lib/lightbox/js/lightbox.min.js"></script>
-
   <!-- Template Javascript -->
   <script src="js/main.js"></script>
 </body>

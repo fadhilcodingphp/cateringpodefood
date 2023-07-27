@@ -339,3 +339,33 @@ function ubahPembayaran($pembayaran)
 
     return mysqli_affected_rows($conn);
 }
+
+// login
+if (isset($_POST['loginadmin'])) {
+    $username = $_POST['ID_Pelanggan'];
+    $password = $_POST['Password'];
+
+    $cekuser = mysqli_query($conn, "SELECT * FROM pelanggan WHERE ID_Pelanggan = '$username' AND Password='$password'");
+    $hitung = mysqli_num_rows($cekuser);
+
+    if ($hitung > 0) {
+        // kalau data ditemukan
+        $ambildatarole = mysqli_fetch_array($cekuser);
+        $role = $ambildatarole['role'];
+        if ($role == 'admin') {
+            $_SESSION['log'] = 'Logged';
+            $_SESSION['roleadmin'] = 'Admin';
+            header('location:Admin/Dashboard.php');
+        } elseif ($role == 'pemilik') {
+            $_SESSION['log'] = 'Logged';
+            $_SESSION['rolepemilik'] = 'Pemilik';
+            header('location:Pemilik/Dashboard.php');
+        } elseif ($role == 'user') {
+            $_SESSION['log'] = 'Logged';
+            $_SESSION['roleuser'] = 'User';
+            header('location:Homepage.php');
+        } else {
+            $error = true;
+        }
+    }
+}

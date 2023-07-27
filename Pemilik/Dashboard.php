@@ -1,8 +1,8 @@
 <?php
 require 'PemilikFunction.php';
 
-if (!isset($_SESSION['pemilik'])) {
-   header("Location: PemilikLogin.php");
+if (!isset($_SESSION['rolepemilik'])) {
+   header("Location: ../Login.php");
    exit;
 }
 
@@ -42,7 +42,7 @@ $total_Menu = mysqli_num_rows($get_Menu);
       <!-- logo di header -->
       <div class="d-flex align-items-center justify-content-between"> <a href="Dashboard.php" class="logo d-flex align-items-center"> <img src="assets/img/logo.png" alt=""> <span class="d-none d-lg-block">Pemilik</span> </a> <i class="bi bi-list toggle-sidebar-btn"></i></div>
       <div class="header-nav ms-auto"> <a href="Profile.php" class="nav-link d-flex"></a></div>
-      <div class="d-flex justify-content-end"> <a href="Pemiliklogout.php" class="nav-link d-flex"> <button type="button" class="btn btn-outline-danger">Logout</button> </a></div>
+      <div class="d-flex justify-content-end"> <a href="../Logout.php" class="nav-link d-flex"> <button type="button" class="btn btn-outline-danger">Logout</button> </a></div>
    </header>
    <!-- sidebar -->
    <aside id="sidebar" class="sidebar">

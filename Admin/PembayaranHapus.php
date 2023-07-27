@@ -1,9 +1,5 @@
 <?php
 require 'AdminFunction.php';
-if (!isset($_SESSION['admin'])) {
-    header("Location: AdminLogin.php");
-    exit;
-}
 $conn->query("UPDATE pembayaran SET
             ID_Rekening = 'Belum Bayar',
             Nama_Rek = 'Masih Menunggu Tagihan', 

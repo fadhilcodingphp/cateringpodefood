@@ -51,7 +51,17 @@ if (isset($_POST["submit"])) {
                <form class="row g-3" action="" method="post">
                   <div class="col-12">
                      <label for="ID_Kategori" class="form-label">ID Kategori (Kombinasi 5 huruf dan angka)</label>
-                     <input type="text" name="ID_Kategori" class="form-control" id="ID_Kategori" required>
+                     <?php
+                     $query = mysqli_query($conn, "SELECT max(ID_Kategori) as kodeTerbesar FROM kategori_produk");
+                     $data = mysqli_fetch_array($query);
+                     $kodeBarang = $data['kodeTerbesar'];
+                     $urutan = (int) substr($kodeBarang, 3, 3);
+                     $urutan++;
+                     $huruf = "KPC";
+                     $kodeBarang = $huruf . sprintf("%03s", $urutan);
+                     ?>
+                     <input type="text" name="ID_Kategori" class="form-control" id="ID_Kategori" value="<?php echo $kodeBarang; ?>" readonly>
+
                   </div>
                   <div class="col-12">
                      <label for="Nama_Kategori" class="form-label">Nama Kategori Produk</label>

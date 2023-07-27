@@ -66,7 +66,7 @@
 
     <!-- Navbar Start -->
     <?php
-    if (!isset($_SESSION["login"])) { ?>
+    if (!isset($_SESSION["roleuser"])) { ?>
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-lg-0 px-4 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
             <a href="Home.php" class="navbar-brand p-0">
                 <img class="img-fluid me-3" src="img/icon/logo.jpg" alt="Icon" />
@@ -83,18 +83,16 @@
                             <a href="#" class="nav-item nav-link">Menu</a>
                         </a>
                         <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                            <a href="Menupaket.php" class="dropdown-item">Paket Catering</a>
-                            <a href="Menulauk.php" class="dropdown-item">Aneka Lauk</a>
-                            <a href="Menunasi.php" class="dropdown-item">Paket Nasi Lauk</a>
-                            <a href="Menurice.php" class="dropdown-item">Paket Rice Bowl</a>
+                            <?php $ambil = mysqli_query($conn, "SELECT * FROM kategori_produk"); ?>
+                            <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
+                                <a href="MenuKategoriDetail.php?id=<?= $pecah['ID_Kategori']; ?>" class="dropdown-item"><?= $pecah['Nama_Kategori']; ?></a>
+                            <?php } ?>
                         </div>
                     </div>
                     <a href="Home.php#caraPesan" class="nav-item nav-link">Panduan Pemesanan</a>
                     <a href="Home.php#kontak" class="nav-item nav-link">Kontak</a>
                 </div>
-                <a href="Login.php" class="btn btn-primary">User<i class="fa fa-arrow-right ms-3"></i></a>&nbsp &nbsp
-                <a href="Admin/AdminLogin.php" class="btn btn-danger">Admin<i class="fa fa-arrow-right ms-3"></i></a>&nbsp &nbsp
-                <a href="Pemilik/PemilikLogin.php" class="btn btn-dark">Pemilik<i class="fa fa-arrow-right ms-3"></i></a>
+                <a href="Login.php" class="btn btn-primary">Login<i class="fa fa-arrow-right ms-3"></i></a>
             </div>
         </nav>
     <?php } else { ?>
@@ -115,10 +113,10 @@
                             <a href="#" class="nav-item nav-link">Menu</a>
                         </a>
                         <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                            <a href="Menupaket.php" class="dropdown-item">Paket Catering</a>
-                            <a href="Menulauk.php" class="dropdown-item">Aneka Lauk</a>
-                            <a href="Menunasi.php" class="dropdown-item">Paket Nasi Lauk</a>
-                            <a href="Menurice.php" class="dropdown-item">Paket Rice Bowl</a>
+                            <?php $ambil = mysqli_query($conn, "SELECT * FROM kategori_produk"); ?>
+                            <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
+                                <a href="MenuKategoriDetail.php?id=<?= $pecah['ID_Kategori']; ?>" class="dropdown-item"><?= $pecah['Nama_Kategori']; ?></a>
+                            <?php } ?>
                         </div>
                     </div>
                     <a href="Homepage.php#caraPesan" class="nav-item nav-link">Panduan Pemesanan</a>
