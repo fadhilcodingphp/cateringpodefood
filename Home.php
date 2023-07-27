@@ -57,7 +57,7 @@ require 'custFunction.php';
   <!-- Navbar End -->
 
 
-  <div class="hero" style="background-image: url('img/beranda.jpg');"></div>
+  <div class="hero" style="background-image: url('img/logo.png'); margin-top: 5px;"></div>
   <br>
   <div id="caraPesan" class="container-xxl py-5">
     <div class="container">
@@ -136,7 +136,7 @@ require 'custFunction.php';
             <p style="color: black;">
               Kamu dapat memilih menu dengan masuk ke pilihan menu. Pilih menu yang kamu mau lalu masukkan menu tersebut ke keranjang belanja.
             </p>
-            <a class="btn btn-outline-primary px-4 mt-3" href="Menu.php">Pilih Menu</a>
+            <a class="btn btn-outline-primary px-4 mt-3" href="MenuKategoriDetail.php?id=KPC001">Pilih Menu</a>
           </div>
         </div>
         <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
