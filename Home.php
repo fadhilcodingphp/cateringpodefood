@@ -122,6 +122,7 @@ require 'custFunction.php';
     <div class="container">
       <div class="row g-5 mb-5 align-items-end wow fadeInUp" data-wow-delay="0.1s">
         <div class="col-lg-8">
+          <p><span class="text-primary me-2">#</span>Panduan Pemesanan</p>
           <h1 class="display-5 mb-0">
             Cara memesan lewat website
             <span class="text-primary">Pode Food Makassar</span>
@@ -156,7 +157,7 @@ require 'custFunction.php';
             <p style="color: black;">
               Bayar tagihan anda dengan cara masuk ke menu tagihan. Pilih tagihan yang akan dibayar dan isi detail tagihan pada form yang muncul.
             </p>
-            <a class="btn btn-outline-primary px-4 mt-3" href="TagihanBayar.php">Bayar Tagihan</a>
+            <a class="btn btn-outline-primary px-4 mt-3" href="TagihanSaya.php">Bayar Tagihan</a>
           </div>
         </div>
         <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -166,7 +167,7 @@ require 'custFunction.php';
             <p style="color: black;">
               Bila pembayaran kamu telah dikonfirmasi, maka tunggu pesanan kamu sampai di tujuan sesuai dengan pesanan yang sudah disepakati.
             </p>
-            <a class="btn btn-outline-primary px-4 mt-3" href="">Pesanan Kamu</a>
+            <a class="btn btn-outline-primary px-4 mt-3" href="PesananSaya.php">Pesanan Kamu</a>
           </div>
         </div>
       </div>

@@ -168,7 +168,7 @@ if (!isset($_SESSION["roleuser"])) {
             <p style="color: black;">
               Bayar tagihan anda dengan cara masuk ke menu tagihan. Pilih tagihan yang akan dibayar dan isi detail tagihan pada form yang muncul.
             </p>
-            <a class="btn btn-outline-primary px-4 mt-3" href="TagihanBayar.php">Bayar Tagihan</a>
+            <a class="btn btn-outline-primary px-4 mt-3" href="TagihanSaya.php">Bayar Tagihan</a>
           </div>
         </div>
         <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -178,7 +178,7 @@ if (!isset($_SESSION["roleuser"])) {
             <p style="color: black;">
               Bila pembayaran kamu telah dikonfirmasi, maka tunggu pesanan kamu sampai di tujuan sesuai dengan pesanan yang sudah disepakati.
             </p>
-            <a class="btn btn-outline-primary px-4 mt-3" href="">Pesanan Kamu</a>
+            <a class="btn btn-outline-primary px-4 mt-3" href="PesananSaya.php">Pesanan Kamu</a>
           </div>
         </div>
       </div>

@@ -1,20 +1,14 @@
 <?php
 require 'AdminFunction.php';
-$awal = $_GET['awal'];
-
-$akhir = $_GET['akhir'];
-
-$tglAwal = isset($_GET['awal']);
-$tglAkhir = isset($_GET['akhir']);
-$sqlPeriode = "AND pesanan.Tgl_Pesan BETWEEN '$awal' AND '$akhir'";
+$sqlPeriode = $_GET['sqlPeriode'];
 
 //script print excel
 header("Content-type: application/vnd-ms-excel");
-header("Content-Disposition: attachment; filename=LaporanPenjualanProduk.xls");
+header("Content-Disposition: attachment; filename=Laporan Penjualan Pode Food.xls");
 ?>
 <html lang="en">
 <main id="main" class="main">
-   <h5 class="card-title">Laporan Periode tanggal <b><?= ($tglAwal); ?></b> s/d <b><?= ($tglAkhir); ?></b></h5>
+   <h5 class="card-title">Laporan Penjualan Pode Food</h5>
    <table>
       <?php $i = 1; ?>
       <thead>
@@ -35,8 +29,8 @@ header("Content-Disposition: attachment; filename=LaporanPenjualanProduk.xls");
                              INNER JOIN pembayaran ON pesanan.ID_Pesanan = pembayaran.ID_Pesanan
                              INNER JOIN produk_item ON pesanan.ID_Pesanan = produk_item.ID_Pesanan 
                              INNER JOIN produk ON produk_item.ID_Produk = produk.ID_Produk
-                             INNER JOIN pelanggan ON pesanan.ID_Pelanggan = pelanggan.ID_Pelanggan 
-                             WHERE pesanan.status = 'Pesanan Selesai' AND pembayaran.status_Pembayaran = 'LUNAS' $sqlPeriode ORDER BY pesanan.Tgl_Pesan ASC") ?>
+                             INNER JOIN pelanggan ON pesanan.ID_Pelanggan = pelanggan.ID_Pelanggan $sqlPeriode ORDER BY pesanan.Tgl_Pesan ASC
+                             ") ?>
          <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
             <tr>
                <td><?= $i ?></td>
@@ -51,6 +45,14 @@ header("Content-Disposition: attachment; filename=LaporanPenjualanProduk.xls");
             </tr>
             <?php $i++; ?>
          <?php } ?>
+         <?php $total_Penjualan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(Total_Prodit) AS total FROM produk_item"))["total"]; ?>
+         <tr>
+            <td></td>
+            <td colspan="3">Total Penjualan Pode Food : </td>
+            <td></td>
+            <td></td>
+            <td><b>Rp.<?php echo number_format($total_Penjualan, 2, ',', '.') ?></b></td>
+         </tr>
       </tbody>
    </table>
 </main>

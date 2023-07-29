@@ -10,9 +10,7 @@ if (isset($_POST['btnTampil'])) {
    $tglAkhir = isset($_POST['txtTglAkhir']) ? $_POST['txtTglAkhir'] : "01-";
    $sqlPeriode = "AND pesanan.Tgl_Pesan BETWEEN '$tglAwal' AND '$tglAkhir'";
 } else {
-   $awalTgl = "01-" . date('m-Y');
-   $akhirTgl = date('d-m-Y');
-   $sqlPeriode = "AND pesanan.Tgl_Pesan BETWEEN '$awalTgl' AND '$akhirTgl'";
+   $sqlPeriode = "AND pesanan.Tgl_Pesan";
 }
 ?>
 <html lang="en">
@@ -109,8 +107,17 @@ if (isset($_POST['btnTampil'])) {
                                     <a class="btn btn-info" href="PesananDetail.php?id=<?= $pecah['ID_Pesanan']; ?>">Detail</a>
                                  </td>
                               </tr>
-                              <?php $i++; ?>
                            <?php } ?>
+                           <?php $total_Penjualan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(Total_Prodit) AS total FROM produk_item"))["total"]; ?>
+                           <tr>
+                              <td></td>
+                              <td colspan="3">Total Penjualan Pode Food : </td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td><b>Rp.<?php echo number_format($total_Penjualan, 2, ',', '.') ?></b></td>
+                           </tr>
+                           <?php $i++; ?>
                         </tbody>
                      </table>
                   </div>

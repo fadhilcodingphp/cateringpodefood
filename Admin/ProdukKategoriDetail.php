@@ -44,7 +44,7 @@ $ubah = query("SELECT * FROM kategori_produk WHERE ID_Kategori = '$id'")[0];
                            </tr>
                         </thead>
                         <tbody>
-                           <?php $ambil = mysqli_query($conn, "SELECT * FROM produk, kategori_produk
+                           <?php $ambil = mysqli_query($conn, "SELECT * FROM produk
                                                                WHERE produk.ID_Kategori = '$id'"); ?>
                            <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
                               <tr>
