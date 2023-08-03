@@ -57,11 +57,30 @@ $ubah = query("SELECT * FROM kategori_produk WHERE ID_Kategori = '$id'")[0];
           <div class="col">
             <div class="card card-product">
               <div class="card-body ">
-                <div class="text-center position-relative mb-2" style="width:100%; height:200px;"> <a href="MenuDetail.php?id=<?= $pecah['ID_Produk']; ?>">
+                <div class="text-center position-relative mb-2" style="width:100%; height:200px;">
+                  <a href="
+                  <?php
+                  $paket = $pecah['ID_Kategori'];
+                  if ($paket == "KPC004") {
+                    echo "MenuDetailPaket.php";
+                  } else {
+                    echo "MenuDetail.php";
+                  }
+                  ?>
+                  ?id=<?= $pecah['ID_Produk']; ?>">
                     <img src="assets/img/<?php echo $pecah['Gambar']; ?>" style="width:100%; max-height:200px;" alt="Grocery Ecommerce Template" class="mb-3 img-fluid"></a>
                 </div>
                 <h3 class="fs-5">
-                  <a href="MenuDetail.php?id=<?= $pecah['ID_Produk']; ?>" class="text-inherit text-primary text-decoration-none"><?php echo $pecah['Nama_Produk']; ?></a>
+                  <a href="
+                  <?php
+                  $paket = $pecah['ID_Kategori'];
+                  if ($paket == "KPC004") {
+                    echo "MenuDetailPaket.php";
+                  } else {
+                    echo "MenuDetail.php";
+                  }
+                  ?>
+                  ?id=<?= $pecah['ID_Produk']; ?>" class="text-inherit text-primary text-decoration-none"><?php echo $pecah['Nama_Produk']; ?></a>
                 </h3>
                 <div class="d-flex justify-content-between align-items-center mt-2 mb-1">
                   <div><span class="text-dark"><?php echo 'Rp. ' . number_format($pecah['Harga'], 2, ',', '.'); ?></span>

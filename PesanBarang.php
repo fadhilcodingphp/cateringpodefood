@@ -77,7 +77,10 @@ if (isset($_POST["submit"])) {
                     <?php $i = 1; ?>
                     <?php $ambil = mysqli_query($conn, "SELECT * FROM keranjang INNER JOIN pelanggan ON keranjang.ID_Pelanggan = pelanggan.ID_Pelanggan  
                     INNER JOIN produk ON keranjang.ID_Produk = produk.ID_Produk WHERE Pelanggan.ID_Pelanggan = '$ID_Pelanggan'"); ?>
-                    <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
+                    <?php while ($pecah = mysqli_fetch_assoc($ambil)) {
+                      $nilai[]  = $pecah['Jumlah_Barang'];
+                      $total[]  = $pecah['Harga'];
+                    ?>
                       <tr>
                         <td><?= $i ?></td>
                         <td scope="row"><img width="150px" src="assets/img/<?php echo $pecah['Gambar']; ?>"></td>
@@ -88,6 +91,18 @@ if (isset($_POST["submit"])) {
                       </tr>
                       <?php $i++ ?>
                     <?php } ?>
+                    <tr>
+                      <?php
+                      $total_barang = array_sum($nilai);
+                      $totalharga = array_sum($total);
+                      ?>
+                      <td></td>
+                      <td>Total</td>
+                      <td></td>
+                      <td><?php echo $total_barang; ?> pcs</td>
+                      <td></td>
+                      <td><?php echo 'Rp. ' . number_format($totalharga, 2, ',', '.'); ?></td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
