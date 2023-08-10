@@ -1,5 +1,9 @@
 <?php
 require 'AdminFunction.php';
+if (!isset($_SESSION["roleadmin"])) {
+    header("Location: ../login.php");
+    exit;
+}
 //cek apakah tombol submit sudah ditekan atau belum
 if (isset($_POST["tambahPelanggan"])) {
     //cek apakah data berhasil ditambahkan atau tidak

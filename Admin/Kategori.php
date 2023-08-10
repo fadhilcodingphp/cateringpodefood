@@ -1,5 +1,9 @@
 <?php
 require 'AdminFunction.php';
+if (!isset($_SESSION["roleadmin"])) {
+   header("Location: ../login.php");
+   exit;
+}
 ?>
 <html lang="en">
 

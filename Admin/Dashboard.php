@@ -1,5 +1,9 @@
 <?php
 require 'AdminFunction.php';
+if (!isset($_SESSION["roleadmin"])) {
+   header("Location: ../login.php");
+   exit;
+}
 $get_Pelanggan = mysqli_query($conn, "SELECT * FROM pelanggan");
 $total_Pelanggan = mysqli_num_rows($get_Pelanggan);
 

@@ -1,5 +1,9 @@
 <?php
 require 'AdminFunction.php';
+if (!isset($_SESSION["roleadmin"])) {
+    header("Location: ../login.php");
+    exit;
+}
 //ambil data di URL
 if (isset($_POST["ubahPesanan"])) {
     //cek apakah data berhasil diubah atau tidak
