@@ -125,7 +125,7 @@ $total_Menu = mysqli_num_rows($get_Menu);
                                        <?php
                                        $bayar = $pecah['status_Pembayaran'];
                                        $status = $pecah['status'];
-                                       if ($status == "Menunggu Pembayaran") {
+                                       if ($status == "Transfer Bank") {
                                           echo "<span class='badge bg-danger'> <h6><b> $status </b></h6> </span>";
                                        } elseif ($status == "Menunggu Konfirmasi Pembayaran") {
                                           echo "<span class='badge bg-danger'> <h6><b> $status </b></h6> </span>";
@@ -140,8 +140,10 @@ $total_Menu = mysqli_num_rows($get_Menu);
                                     <td scope="row">
                                        <?php
                                        if ($bayar == "LUNAS") {
+                                          echo "<span class='badge bg-danger'> <h6><b> $bayar </b></h6> </span>";
+                                       } elseif ($bayar == "Transfer Bank") {
                                           echo "<span class='badge bg-success'> <h6><b> $bayar </b></h6> </span>";
-                                       } elseif ($bayar == "DP 50% dan COD") {
+                                       } elseif ($bayar == "COD (Bayar di Tempat)") {
                                           echo "<span class='badge bg-warning'> <h6><b> $bayar </b></h6> </span>";
                                        } elseif ($bayar == "Belum Bayar") {
                                           echo "<span class='badge bg-danger'> <h6><b> $bayar </b></h6> </span>";
@@ -192,10 +194,11 @@ $total_Menu = mysqli_num_rows($get_Menu);
                                     <td scope="row"><?php echo $pecah['Tgl_Kirim']; ?></td>
                                     <td scope="row">
                                        <?php
-                                       $bayar = $pecah['status_Pembayaran'];
                                        if ($bayar == "LUNAS") {
+                                          echo "<span class='badge bg-danger'> <h6><b> $bayar </b></h6> </span>";
+                                       } elseif ($bayar == "Transfer Bank") {
                                           echo "<span class='badge bg-success'> <h6><b> $bayar </b></h6> </span>";
-                                       } elseif ($bayar == "DP 50% dan COD") {
+                                       } elseif ($bayar == "COD (Bayar di Tempat)") {
                                           echo "<span class='badge bg-warning'> <h6><b> $bayar </b></h6> </span>";
                                        } elseif ($bayar == "Belum Bayar") {
                                           echo "<span class='badge bg-danger'> <h6><b> $bayar </b></h6> </span>";

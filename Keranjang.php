@@ -118,7 +118,21 @@ if (isset($_POST["submit"])) {
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='PesanBarang.php'">Buat Pesanan</button>
+                  <?php
+                  $ambil = mysqli_query($conn, "SELECT * FROM bukatutup");
+                  ?>
+                  <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
+                    <?php
+                    $status = $pecah['status'];
+                    if ($status == "Buka Pesanan") { ?>
+                      <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='PesanBarang.php'">Buat Pesanan</button>
+                    <?php } ?>
+
+                    <?php
+                    if ($status == "Tutup Pesanan") { ?>
+                      <h4>Tidak Menerima Pesanan</h4>
+                    <?php } ?>
+                  <?php } ?>
                 </div>
               </div>
             </div>

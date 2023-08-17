@@ -10,14 +10,14 @@ if (isset($_POST["tambahPaket"])) {
    if (tambahPaket($_POST) > 0) {
       echo "
         <script>
-        document.location.href='Produkcatering.php';
+        document.location.href='ProdukPaket.php';
         </script>
         ";
    } else {
       echo "
         <script>
         alert('Produk gagal ditambahkan');
-        document.location.href='ProdukTambah.php';
+        document.location.href='ProdukTambahPaket.php';
         </script>
         ";
    }

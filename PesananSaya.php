@@ -55,9 +55,11 @@ while ($pecah = mysqli_fetch_assoc($ambil)) {
                       ID Pesanan: <?php echo $pecah['ID_Pesanan']; ?> |
                       <?php
                       $status = $pecah['status'];
-                      if ($status == "Menunggu Pembayaran") {
+                      if ($status == "Transfer Bank") {
                         echo "<span class='badge bg-primary'> $status </span> &ensp;";
                       } elseif ($status == "Menunggu Konfirmasi Pembayaran") {
+                        echo "<span class='badge bg-danger'> $status </span> &ensp;";
+                      } elseif ($status == "COD (Bayar di Tempat)") {
                         echo "<span class='badge bg-danger'> $status </span> &ensp;";
                       } elseif ($status == "Diproses") {
                         echo "<span class='badge bg-warning'> $status </span> &ensp;";
@@ -69,40 +71,64 @@ while ($pecah = mysqli_fetch_assoc($ambil)) {
                     </span>
                     <span class="d-block text h6">Tanggal: <?php echo $pecah['Tgl_Pesan']; ?></span>
                   </div>
+                  <hr style="border-top: 1px solid #8c8b8b;">
                   <?php
-                  $bayar = $pecah['status_Pembayaran'];
-                  if ($bayar == "Belum Bayar") { ?>
-                    <div class="col-2">
-                      <a href="PesananBatal.php?id=<?= $pecah['ID_Pesanan']; ?>" class="btn btn-outline-danger" onclick="return confirm('Yakin ingin membatalkan pesanan?')">Batalkan Pesanan</a>
+                  $status = $pecah['status'];
+                  if ($status == "Transfer Bank") { ?>
+                    <div class="col-7">
+                      <a href="TagihanBayar.php?id=<?= $pecah['ID_Pesanan']; ?>" class="btn btn-primary">Bayar Tagihan</a>
+                      <a href="PesananBatal.php?id=<?= $pecah['ID_Pesanan']; ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin membatalkan pesanan?')">Batalkan Pesanan</a>
                     </div>
                   <?php } ?>
                   <?php
-                  $bayar = $pecah['status_Pembayaran'];
-                  if ($bayar == "LUNAS") { ?>
+                  $status = $pecah['status'];
+                  if ($status == "COD (Bayar di Tempat)") { ?>
                     <div class="col-2">
                       <a href="PesananDiterima.php?id=<?= $pecah['ID_Pesanan']; ?>" type="submit" name="submit" id="submit" class="btn btn-primary">Pesanan Diterima</a>
                     </div>
                   <?php } ?>
-
-
+                  <?php
+                  $status = $pecah['status'];
+                  if ($status == "Diproses") { ?>
+                    <div class="col-2">
+                      <a href="PesananDiterima.php?id=<?= $pecah['ID_Pesanan']; ?>" type="submit" name="submit" id="submit" class="btn btn-primary">Pesanan Diterima</a>
+                    </div>
+                  <?php } ?>
+                  <?php
+                  $status = $pecah['status'];
+                  if ($status == "Dikirim") { ?>
+                    <div class="col-2">
+                      <a href="PesananDiterima.php?id=<?= $pecah['ID_Pesanan']; ?>" type="submit" name="submit" id="submit" class="btn btn-primary">Pesanan Diterima</a>
+                    </div>
+                  <?php } ?>
+                  <?php
+                  $status = $pecah['status'];
+                  if ($status == "Pesanan Selesai") { ?>
+                    <div class="col-5">
+                      <h6>Paket Telah Diterima</h6>
+                    </div>
+                  <?php } ?>
                 </div>
 
                 <hr style="border-top: 1px solid #8c8b8b;">
 
-                <div class="col-md-2">
+
+                <div class="col-md-4 mb-3">
                   <p class="d-block text-primary mb-1">Kontak Penerima</p>
-                  <p class="d-block text mb-0"><?php echo $pecah['Nama_Penerima']; ?></p>
-                  <p class="d-block text mb-0"><?php echo $pecah['NoTelp_Penerima']; ?></p>
+                  <p class="d-block text mb-0">Penerima : <?php echo $pecah['Nama_Penerima']; ?></p>
+                  <p class="d-block text mb-0">No. Penerima : <?php echo $pecah['NoTelp_Penerima']; ?></p>
+                  <p class="d-block text mb-0">Tanggal Pemesanan : <?php echo $pecah['Tgl_Pesan']; ?></p>
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-3">
                   <p class="d-block text-primary mb-1">Detail Pengiriman</p>
-                  <p class="d-block text mb-0"><?php echo $pecah['Alamat']; ?></p>
-                  <p class="d-block text mb-0"><?php echo $pecah['link_Lokasi']; ?></p>
+                  <p class="d-block text mb-0">Alamat : <?php echo $pecah['Alamat']; ?></p>
+                  <p class="d-block text mb-0">Link Maps : <?php echo $pecah['link_Lokasi']; ?></p>
                 </div>
                 <div class="col-md-3 mb-3">
-                  <p class="d-block text-primary mb-1">Pembayaran</p>
-                  <p class="d-block text mb-0"><?php echo $pecah['Nama_Rek']; ?></p>
-                  <p class="d-block text mb-0"><?php echo $pecah['Total_Order']; ?></p>
+                  <p class="d-block text-primary mb-1">Total Pembayaran</p>
+                  <p class="d-block text mb-0">Total Pesanan : <?php echo 'Rp. ' . number_format($pecah['Total_pesanan'], 2, ',', '.'); ?></p>
+                  <p class="d-block text mb-0">Biaya Pengiriman : <?php echo 'Rp. ' . number_format($pecah['Biaya_pengiriman'], 2, ',', '.'); ?></p>
+                  <p class="d-block text mb-0">Total Pembayaran : <?php echo 'Rp. ' . number_format($pecah['Total_pesanan'] + $pecah['Biaya_pengiriman'], 2, ',', '.'); ?></p>
                 </div>
                 <hr style="border-top: 1px solid #8c8b8b;">
 

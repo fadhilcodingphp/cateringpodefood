@@ -137,7 +137,7 @@ WHERE pesanan.ID_Pesanan = $id")[0];
                                     </div>
                                     <div class="row mb-3">
                                         <label for="Total_Order" class="col-md-4 col-lg-3 col-form-label">Total Harga yang Harus Dibayar</label>
-                                        <div class="col-md-8 col-lg-9"> <input name="Total_Order" type="text" class="form-control" id="Total_Order" value="<?= $pesanan['Total_Order'] ?>" readonly></div>
+                                        <div class="col-md-8 col-lg-9"> <input name="Total_Order" type="text" class="form-control" id="Total_Order" value="<?= $pesanan['Total_pesanan'] + $pesanan['Biaya_pengiriman'] - $pesanan['Diskon_Pesanan'] ?>" readonly></div>
                                     </div>
                                     <div class="row mb-3">
                                         <label for="company" class="col-md-4 col-lg-3 col-form-label">Diskon Pemesanan</label>
@@ -167,10 +167,11 @@ WHERE pesanan.ID_Pesanan = $id")[0];
                                         <div class="col-lg-3 col-md-4 label">Status Pembayaran</div>
                                         <div class="col-lg-9 col-md-8">
                                             <?php
-                                            $bayar = $pesanan['status_Pembayaran'];
                                             if ($bayar == "LUNAS") {
+                                                echo "<span class='badge bg-danger'> <h6><b> $bayar </b></h6> </span>";
+                                            } elseif ($bayar == "Transfer Bank") {
                                                 echo "<span class='badge bg-success'> <h6><b> $bayar </b></h6> </span>";
-                                            } elseif ($bayar == "DP 50% dan COD") {
+                                            } elseif ($bayar == "COD (Bayar di Tempat)") {
                                                 echo "<span class='badge bg-warning'> <h6><b> $bayar </b></h6> </span>";
                                             } elseif ($bayar == "Belum Bayar") {
                                                 echo "<span class='badge bg-danger'> <h6><b> $bayar </b></h6> </span>";

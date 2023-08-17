@@ -183,6 +183,16 @@ if (isset($_POST["submit"])) {
               </div>
               <div class="form-group row">
                 <div class="col-md-12 mb-3">
+                  <label for="status" class="text-black mb-1">Metode Pembayaran<span class="text-danger">*</span></label>
+                  <select class="form-select" aria-label="Default select example" name="status">
+                    <option>--</option>
+                    <option>Transfer Bank</option>
+                    <option>COD (Bayar di Tempat)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-12 mb-3">
                   <label for="Catatan" class="text-black mb-1">Catatan</label>
                   <input type="text" class="form-control" id="Catatan" name="Catatan" placeholder="Masukkan catatan seperti bentuk cap nasi yang diinginkan atau pilihan lauk">
                 </div>

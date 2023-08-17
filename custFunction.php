@@ -142,6 +142,7 @@ function TambahPesanan($tambahPesanan)
     $Nama_Penerima = htmlspecialchars($tambahPesanan["Nama_Penerima"]);
     $NoTelp_Penerima = htmlspecialchars($tambahPesanan["NoTelp_Penerima"]);
     $Alamat = htmlspecialchars($tambahPesanan["Alamat"]);
+    $Status = htmlspecialchars($tambahPesanan["status"]);
     $link_Lokasi = htmlspecialchars($tambahPesanan["link_Lokasi"]);
     $Catatan = htmlspecialchars($tambahPesanan["Catatan"]);
     $Jarak = htmlspecialchars($tambahPesanan["jarak"]);
@@ -160,9 +161,9 @@ function TambahPesanan($tambahPesanan)
                                            '$Alamat', 
                                            '$link_Lokasi', 
                                            '$Catatan', 
-                                           $total, 
+                                           $total,
                                            '', 
-                                           'Menunggu Pembayaran',
+                                           '$Status',
                                            '$Jarak', 
                                            '$Biaya_Pengiriman',
                                            '' )";
@@ -184,7 +185,7 @@ function TambahPesanan($tambahPesanan)
         mysqli_query($conn, $input);
     }
 
-    $input = "INSERT INTO pembayaran VALUES ( '', '$ID_Pesanan', 'Menunggu Pembayaran', 'Belum Bayar','' ,'','','','','')";
+    $input = "INSERT INTO pembayaran VALUES ( '', '$ID_Pesanan', '$Status', '$Status','' ,'','','','','')";
     mysqli_query($conn, $input);
 
     $delete = "DELETE FROM keranjang WHERE ID_Pelanggan = '$ID_Pelanggan'";
@@ -284,7 +285,12 @@ function BeriNilai($data)
     $ID_Pesanan = htmlspecialchars($data["ID_Pesanan"]);
     $Nama_Penerima = htmlspecialchars($data["Nama_Penerima"]);
     $Testimoni = htmlspecialchars($data["Testimoni"]);
-    $Gambar = htmlspecialchars($data["Gambar"]);
+
+    //upload gambar
+    $Gambar = uploadGambar();
+    if (!$Gambar) {
+        return false;
+    }
 
     $input = "INSERT INTO penilaian VALUES ('$Nama_Penerima', '$Gambar', '$Testimoni')";
     mysqli_query($conn, $input);

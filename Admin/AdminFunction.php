@@ -53,11 +53,17 @@ function tambahKategori($data)
     $nama_kategori = htmlspecialchars($data["Nama_Kategori"]);
 
     //query insert data
-    $queryinput = "INSERT INTO kategori_produk VALUES ('$id_kategori', '$nama_kategori')";
+    $queryinput = "INSERT INTO kategori_produk VALUES ('', '$id_kategori', '$nama_kategori')";
     mysqli_query($conn, $queryinput);
     return mysqli_affected_rows($conn);
 }
 function hapus()
+{
+    global $conn;
+    return mysqli_affected_rows($conn);
+}
+
+function bukatutup()
 {
     global $conn;
     return mysqli_affected_rows($conn);
@@ -97,7 +103,18 @@ function tambahProduk($produk)
     }
 
     //query insert data
-    $inputProduk = "INSERT INTO produk VALUES ('', '$ID_Kategori','$Nama_produk', '$Ketahanan_produk', '$Harga', '$Keterangan', '', '', '', '$Gambar')";
+    $inputProduk = "INSERT INTO produk VALUES ('', 
+                                               '$ID_Kategori',
+                                               '$Nama_produk', 
+                                               '$Ketahanan_produk', 
+                                               '$Harga', 
+                                               '', 
+                                               '', 
+                                               '$Keterangan', 
+                                               '', 
+                                               '', 
+                                               '', 
+                                               '$Gambar')";
     mysqli_query($conn, $inputProduk);
 
     return mysqli_affected_rows($conn);
@@ -123,7 +140,7 @@ function tambahPaket($produkpaket)
     }
 
     //query insert data
-    $inputProduk = "INSERT INTO produk VALUES ('', '$ID_Kategori','$Nama_produk', '$Ketahanan_produk', '$Harga', '$Keterangan', '$Paket_A', '$Paket_B', '$Paket_C', '$Gambar')";
+    $inputProduk = "INSERT INTO produk VALUES ('', 'KPC001','$Nama_produk', '$Ketahanan_produk', '$Harga', '', '', '$Keterangan', '$Paket_A', '$Paket_B', '$Paket_C', '$Gambar')";
     mysqli_query($conn, $inputProduk);
 
     return mysqli_affected_rows($conn);

@@ -80,16 +80,30 @@ if (isset($_POST["submit"])) {
                                                       INNER JOIN produk_item ON pesanan.ID_Pesanan = produk_item.ID_Pesanan  
                                                       INNER JOIN produk ON produk_item.ID_Produk = produk.ID_Produk 
                                                       WHERE pembayaran.ID_Pembayaran = $id"); ?>
-                  <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
+                  <?php while ($pecah = mysqli_fetch_assoc($ambil)) {
+                    $nilai[]  = $pecah['Jumlah_Barang'];
+                    $total[]  = $pecah['Harga'];
+                  ?>
                     <tr>
                       <td><?= $i ?></td>
-                      <td scope="row"><img width="150px" src="assets/img/<?php echo $pecah['Gambar']; ?>"></td>
+                      <td scope="row"><img width="100px" src="assets/img/<?php echo $pecah['Gambar']; ?>"></td>
                       <td scope="row"><?php echo $pecah['Nama_Produk']; ?></td>
                       <td scope="row"><?php echo $pecah['Jumlah_Barang']; ?></td>
                       <td scope="row"><?php echo 'Rp. ' . number_format($pecah['Harga'], 2, ',', '.'); ?></td>
                     </tr>
                     <?php $i++ ?>
                   <?php } ?>
+                  <tr>
+                    <?php
+                    $total_barang = array_sum($nilai);
+                    $totalharga = array_sum($total);
+                    ?>
+                    <td></td>
+                    <td>Total</td>
+                    <td></td>
+                    <td><?php echo $total_barang; ?> pcs</td>
+                    <td><?php echo 'Rp. ' . number_format($totalharga, 2, ',', '.'); ?></td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -133,7 +147,7 @@ if (isset($_POST["submit"])) {
                 <div class="form-group row">
                   <div class="col-md-12 mb-3">
                     <label for="Total_Order" class="text-black mb-1">Besar Nominal yang Sudah Dibayar<span class="text-danger">*</span></label>
-                    <div class="col-md-8 col-lg-9"> <input name="Total_Order" type="text" class="form-control" id="Total_Order" value="<?= $pecah['Total_Order'] ?>" readonly></div>
+                    <div class="col-md-8 col-lg-9"> <input name="Total_Order" type="text" class="form-control" id="Total_Order" value="<?= 'Rp. ' . number_format($pecah['Total_pesanan'] + $pecah['Biaya_pengiriman'] - $pecah['Diskon_Pesanan'], 2, ',', '.'); ?>" readonly></div>
                   </div>
                 </div>
                 <div class="form-group row">

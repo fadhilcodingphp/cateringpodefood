@@ -15,6 +15,7 @@ if (!isset($_SESSION["roleuser"])) {
   <?php
   include 'header.php';
   ?>
+
   <!-- Header Start -->
   <div style="width:60%;" class="container">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -49,7 +50,54 @@ if (!isset($_SESSION["roleuser"])) {
     </div>
   </div>
   <!-- Header End -->
-
+  <div class="text-center mt-2" style="font-size: 20px;">
+    <?php
+    $ambil = mysqli_query($conn, "SELECT * FROM bukatutup");
+    ?>
+    <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
+      <?php
+      $status = $pecah['status'];
+      if ($status == "Buka Pesanan") {
+        echo "";
+      } elseif ($status == "Tutup Pesanan") {
+        echo "Pesanan telah mencapai target, silahkan coba lagi di hari esok.";
+      }
+      ?>
+    <?php } ?>
+  </div>
+  <div class="container-xxl py-5">
+    <div class="container">
+      <h1 class="display-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
+        Produk Promosi
+      </h1>
+      <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s"">
+        <?php
+        $ambil = mysqli_query($conn, "SELECT * FROM penilaian");
+        ?>
+        <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
+          <div class=" testimonial-item text-center">
+        <div class="testimonial-text rounded text-center p-4">
+          <p>
+            <img class="img-fluid border border-1 p-2 mx-auto mb-4" src="assets/img/<?php echo $pecah['Foto_Produk']; ?>" style="width: 100px; height: 100px" />
+            Harga Sebelumnya :
+            <br>
+            Harga Promo :
+            <br>
+            Berlaku Sampai :
+          </p>
+          <div>
+            <a href="tambahKeranjang.php?id=<?= $pecah['ID_Produk']; ?>" class="btn btn-success btn-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>Tambah Ke Keranjang</a>
+          </div>
+        </div>
+      </div>
+    <?php } ?>
+    </div>
+  </div>
+  </div>
   <!-- About Start -->
   <div id="about" class="container-xxl py-5">
     <div class="container">
@@ -178,7 +226,7 @@ if (!isset($_SESSION["roleuser"])) {
             <p style="color: black;">
               Bila pembayaran kamu telah dikonfirmasi, maka tunggu pesanan kamu sampai di tujuan sesuai dengan pesanan yang sudah disepakati.
             </p>
-            <a class="btn btn-outline-primary px-4 mt-3" href="PesananSaya.php">Pesanan Kamu</a>
+            <a class="btn btn-outline-primary px-4 mt-3" href="PesananSaya.php">Pesanan Saya</a>
           </div>
         </div>
       </div>
@@ -199,9 +247,9 @@ if (!isset($_SESSION["roleuser"])) {
         ?>
         <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
           <div class="testimonial-item text-center">
-            <img class="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4" src="assets/img/<?php echo $pecah['Foto_Produk']; ?>" style="width: 100px; height: 100px" />
             <div class="testimonial-text rounded text-center p-4">
               <p>
+                <img class="img-fluid border border-1 p-2 mx-auto mb-4" src="assets/img/<?php echo $pecah['Foto_Produk']; ?>" style="width: 100px; height: 100px" />
                 <?php echo $pecah['Testimoni']; ?></a>
               </p>
               <h5 class="mb-1"><?php echo $pecah['Nama_Penerima']; ?></a></h5>

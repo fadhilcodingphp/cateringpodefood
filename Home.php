@@ -167,7 +167,7 @@ require 'custFunction.php';
             <p style="color: black;">
               Bila pembayaran kamu telah dikonfirmasi, maka tunggu pesanan kamu sampai di tujuan sesuai dengan pesanan yang sudah disepakati.
             </p>
-            <a class="btn btn-outline-primary px-4 mt-3" href="PesananSaya.php">Pesanan Kamu</a>
+            <a class="btn btn-outline-primary px-4 mt-3" href="PesananSaya.php">Pesanan Saya</a>
           </div>
         </div>
       </div>
@@ -182,15 +182,14 @@ require 'custFunction.php';
         Testimoni
       </h1>
       <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-
         <?php
         $ambil = mysqli_query($conn, "SELECT * FROM penilaian");
         ?>
         <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
           <div class="testimonial-item text-center">
-            <img class="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4" src="assets/img/<?php echo $pecah['Foto_Produk']; ?>" style="width: 100px; height: 100px" />
             <div class="testimonial-text rounded text-center p-4">
               <p>
+                <img class="img-fluid border border-1 p-2 mx-auto mb-4" src="assets/img/<?php echo $pecah['Foto_Produk']; ?>" style="width: 100px; height: 100px" />
                 <?php echo $pecah['Testimoni']; ?></a>
               </p>
               <h5 class="mb-1"><?php echo $pecah['Nama_Penerima']; ?></a></h5>
