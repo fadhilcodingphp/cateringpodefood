@@ -54,7 +54,10 @@ $ubah = query("SELECT * FROM kategori_produk WHERE ID_Kategori = '$id'")[0];
                               <tr>
                                  <td><?= $i ?></td>
                                  <td scope="row"><?php echo $pecah['Nama_Produk']; ?></td>
-                                 <td scope="row"><img width="150px" src="../assets/img/<?php echo $pecah['Gambar']; ?>"></td>
+                                 <td scope="row">
+                                    <img width="150px" src="../assets/img/<?php echo $pecah['Gambar']; ?>">
+                                    <a class="btn btn-info mt-2" href="ProdukPromosi.php?id=<?= $pecah['ID_Produk']; ?>">Promosikan</a>
+                                 </td>
                                  <td scope="row"><?php echo $pecah['Ketahanan_Produk']; ?></td>
                                  <td scope="row"><?php echo 'Rp. ' . number_format($pecah['Harga'], 2, ',', '.'); ?></td>
                                  <td>

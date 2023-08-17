@@ -72,18 +72,18 @@ if (!isset($_SESSION["roleuser"])) {
       </h1>
       <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s"">
         <?php
-        $ambil = mysqli_query($conn, "SELECT * FROM penilaian");
+        $ambil = mysqli_query($conn, "SELECT * FROM produk");
         ?>
         <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
           <div class=" testimonial-item text-center">
         <div class="testimonial-text rounded text-center p-4">
           <p>
             <img class="img-fluid border border-1 p-2 mx-auto mb-4" src="assets/img/<?php echo $pecah['Foto_Produk']; ?>" style="width: 100px; height: 100px" />
-            Harga Sebelumnya :
+            Harga Sebelumnya : <?php echo $pecah['Harga']; ?>
             <br>
-            Harga Promo :
+            Harga Promo : <?php echo $pecah['Promo']; ?>
             <br>
-            Berlaku Sampai :
+            Berlaku Sampai : <?php echo $pecah['Tgl_Promo']; ?>
           </p>
           <div>
             <a href="tambahKeranjang.php?id=<?= $pecah['ID_Produk']; ?>" class="btn btn-success btn-sm">
