@@ -58,6 +58,7 @@ if (!isset($_SESSION['roleadmin'])) {
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Produk</a></li>
+                    <li><a href="ProdukPaket.php">Paket Catering</a></li>
                     <?php $ambil = mysqli_query($conn, "SELECT * FROM kategori_produk WHERE ID > 2"); ?>
                     <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
                         <li><a href="ProdukKategoriDetail.php?id=<?= $pecah['ID_Kategori']; ?>"><?= $pecah['Nama_Kategori']; ?></a></li>

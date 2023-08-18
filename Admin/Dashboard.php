@@ -4,7 +4,7 @@ if (!isset($_SESSION["roleadmin"])) {
    header("Location: ../login.php");
    exit;
 }
-$get_Pelanggan = mysqli_query($conn, "SELECT * FROM pelanggan");
+$get_Pelanggan = mysqli_query($conn, "SELECT * FROM pelanggan WHERE id > 2");
 $total_Pelanggan = mysqli_num_rows($get_Pelanggan);
 
 $get_Pesanan = mysqli_query($conn, "SELECT * FROM Pesanan");
