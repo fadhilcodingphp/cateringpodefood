@@ -7,11 +7,11 @@ if (!isset($_SESSION["roleadmin"])) {
 //cek apakah tombol submit sudah ditekan atau belum
 if (isset($_POST["ubahProduk"])) {
    //cek apakah data berhasil diubah atau tidak
-   if (ubahProduk($_POST) > 0) {
+   if (promosiProduk($_POST) > 0) {
       echo "
         <script>
         alert('Data berhasil diubah');
-        document.location.href='Produk.php';
+        document.location.href='ProdukKategoriDetail.php?id=KPC003';
         </script>
         ";
    } else {
@@ -72,10 +72,6 @@ $ubahProduk = query("SELECT * FROM produk, kategori_produk WHERE ID_Produk = '$I
                                     <div class="col-md-8 col-lg-9"> <input  type="text" class="form-control" id="ID_Produk" ></div>
                                  </div> -->
                            <div class="row mb-3">
-                              <label for="ID_Kategori" class="col-md-4 col-lg-3 col-form-label">Kategori Produk</label>
-                              <div class="col-md-8 col-lg-9"> <input name="ID_Kategori" type="text" class="form-control" id="ID_Kategori" value="<?= $ubahProduk['ID_Kategori'] ?>" readonly></div>
-                           </div>
-                           <div class="row mb-3">
                               <label for="Nama_Produk" class="col-md-4 col-lg-3 col-form-label">Nama Produk</label>
                               <div class="col-md-8 col-lg-9"> <input name="Nama_Produk" type="text" class="form-control" id="Nama_Produk" value="<?= $ubahProduk['Nama_Produk'] ?>" readonly></div>
                            </div>
@@ -88,8 +84,8 @@ $ubahProduk = query("SELECT * FROM produk, kategori_produk WHERE ID_Produk = '$I
                               <div class="col-md-8 col-lg-9"> <input name="Harga" type="text" class="form-control" id="Harga" value="<?= $ubahProduk['Harga'] ?>" readonly></div>
                            </div>
                            <div class="row mb-3">
-                              <label for="Harga" class="col-md-4 col-lg-3 col-form-label">Harga Promo</label>
-                              <div class="col-md-8 col-lg-9"> <input name="Harga" type="text" class="form-control" id="Harga" value="<?= $ubahProduk['Promo'] ?>" required></div>
+                              <label for="Promo" class="col-md-4 col-lg-3 col-form-label">Harga Promo</label>
+                              <div class="col-md-8 col-lg-9"> <input name="Promo" type="text" class="form-control" id="Promo" value="<?= $ubahProduk['Promo'] ?>" required></div>
                            </div>
                            <div class="row mb-3">
                               <label for="Tgl_Promo" class="col-md-4 col-lg-3 col-form-label">Batas Promo</label>

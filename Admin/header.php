@@ -39,7 +39,7 @@ if (!isset($_SESSION['roleadmin'])) {
                 <li class="nav-item-dropdown"> <a class="nav-link collapsed" href=""> <i class="bi bi-cart-fill"></i> <span>Produk</span> </a></li>
                 <div class="dropdown container">
                     <a href="ProdukPaket.php" class="dropdown-item">Produk Catering</a>
-                    <?php $ambil = mysqli_query($conn, "SELECT * FROM kategori_produk WHERE ID > 1"); ?>
+                    <?php $ambil = mysqli_query($conn, "SELECT * FROM kategori_produk WHERE ID > 2"); ?>
                     <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
                         <a href="ProdukKategoriDetail.php?id=<?= $pecah['ID_Kategori']; ?>" class="dropdown-item"><?= $pecah['Nama_Kategori']; ?></a>
                     <?php } ?>

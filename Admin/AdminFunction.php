@@ -120,6 +120,35 @@ function tambahProduk($produk)
     return mysqli_affected_rows($conn);
 }
 
+function promosiProduk($produk)
+{
+    global $conn;
+    //ambil data dari tiap elemen form
+    $Nama_produk = htmlspecialchars($produk["Nama_Produk"]);
+    $Harga = htmlspecialchars($produk["Harga"]);
+    $Promo = htmlspecialchars($produk["Promo"]);
+    $Tgl_Promo = htmlspecialchars($produk["Tgl_Promo"]);
+    $Ketahanan_Produk = htmlspecialchars($produk["Ketahanan_Produk"]);
+    $Keterangan = htmlspecialchars($produk["Keterangan"]);
+    $Gambar = htmlspecialchars($produk["gambarLama"]);
+
+    //query ubah data
+    $ubahproduk = "INSERT INTO produk VALUES ('', 
+                                              'KPC002',
+                                              '$Nama_produk', 
+                                              '$Ketahanan_Produk',
+                                              '$Harga', 
+                                              '$Promo', 
+                                              '$Tgl_Promo', 
+                                              '$Keterangan', 
+                                              '', 
+                                              '', 
+                                              '', 
+                                              '$Gambar')";
+    mysqli_query($conn, $ubahproduk);
+    return mysqli_affected_rows($conn);
+}
+
 //Produk
 function tambahPaket($produkpaket)
 {

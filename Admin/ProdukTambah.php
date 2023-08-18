@@ -10,7 +10,7 @@ if (isset($_POST["tambahProduk"])) {
    if (tambahProduk($_POST) > 0) {
       echo "
         <script>
-        document.location.href='ProdukKategoriDetail.php?id=KPC002';
+        document.location.href='ProdukKategoriDetail.php?id=KPC003';
         </script>
         ";
    } else {

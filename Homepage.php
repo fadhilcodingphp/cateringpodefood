@@ -72,27 +72,34 @@ if (!isset($_SESSION["roleuser"])) {
       </h1>
       <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s"">
         <?php
-        $ambil = mysqli_query($conn, "SELECT * FROM produk");
+        $ambil = mysqli_query($conn, "SELECT * FROM produk WHERE produk.ID_Kategori = 'KPC002'");
         ?>
         <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
           <div class=" testimonial-item text-center">
         <div class="testimonial-text rounded text-center p-4">
-          <p>
-            <img class="img-fluid border border-1 p-2 mx-auto mb-4" src="assets/img/<?php echo $pecah['Foto_Produk']; ?>" style="width: 100px; height: 100px" />
-            Harga Sebelumnya : <?php echo $pecah['Harga']; ?>
-            <br>
-            Harga Promo : <?php echo $pecah['Promo']; ?>
-            <br>
-            Berlaku Sampai : <?php echo $pecah['Tgl_Promo']; ?>
-          </p>
-          <div>
-            <a href="tambahKeranjang.php?id=<?= $pecah['ID_Produk']; ?>" class="btn btn-success btn-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>Tambah Ke Keranjang</a>
-          </div>
+          <?php
+          $tgl_now = date("Y-m-d");
+          $tgl_exp = $pecah['Tgl_Promo']; //tanggal expired
+          if ($tgl_now >= $tgl_exp) {
+            $conn->query("DELETE FROM produk WHERE Tgl_Promo = '$tgl_exp'");
+          } else {
+          ?>
+            <p>
+              <img class="img-fluid border border-1 p-2 mx-auto mb-4" src="assets/img/<?php echo $pecah['Gambar']; ?>" style="width: 100px; height: 100px" />
+            <h3><?php echo $pecah['Nama_Produk']; ?></h3>
+            <h5 style="text-decoration: line-through;"><?php echo 'Rp. ' . number_format($pecah['Harga'], 2, ',', '.'); ?></h5>
+            <h5>Sekarang Hanya : <?php echo 'Rp. ' . number_format($pecah['Promo'], 2, ',', '.'); ?></h5>
+            <h6>Berlaku Sampai : <?php echo $pecah['Tgl_Promo']; ?></h6>
+            </p>
+            <div>
+              <a href="tambahKeranjang.php?id=<?= $pecah['ID_Produk']; ?>" class="btn btn-success btn-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>Tambah Ke Keranjang</a>
+            </div>
         </div>
+      <?php } ?>
       </div>
     <?php } ?>
     </div>
