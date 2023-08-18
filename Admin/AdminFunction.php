@@ -198,6 +198,7 @@ function ubahProduk($produk)
     }
     //query ubah data
     $ubahproduk = "UPDATE produk, kategori_produk SET
+                    produk.ID_Kategori = '$ID_Kategori', 
                     produk.Nama_Produk = '$Nama_produk', 
                     produk.Gambar = '$Gambar', 
                     produk.Ketahanan_Produk = '$Ketahanan_produk',

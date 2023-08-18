@@ -14,7 +14,7 @@
         sidebar.classList.toggle("close");
     });
 </script>
-<footer id="footer" class="footer">
+<footer id="footer" class="footer fixed-bottom">
     <div class="copyright"> &copy; Copyright <strong><span>Pode Food Makassar</span></strong>. All Rights Reserved</div>
 </footer>
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
