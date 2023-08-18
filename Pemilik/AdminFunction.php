@@ -44,9 +44,45 @@ function uploadGambar()
     return $gambarBaru;
 }
 
+// Kategori Produk
+function tambahKategori($data)
+{
+    global $conn;
+    //ambil data dari tiap elemen form
+    $id_kategori = htmlspecialchars($data["ID_Kategori"]);
+    $nama_kategori = htmlspecialchars($data["Nama_Kategori"]);
+
+    //query insert data
+    $queryinput = "INSERT INTO kategori_produk VALUES ('', '$id_kategori', '$nama_kategori')";
+    mysqli_query($conn, $queryinput);
+    return mysqli_affected_rows($conn);
+}
 function hapus()
 {
     global $conn;
+    return mysqli_affected_rows($conn);
+}
+
+function bukatutup()
+{
+    global $conn;
+    return mysqli_affected_rows($conn);
+}
+function ubahKategori($data)
+{
+    global $conn;
+    //ambil data dari tiap elemen form
+    $id_kategori = htmlspecialchars($data["ID_Kategori"]);
+    $nama_kategori = htmlspecialchars($data["Nama_Kategori"]);
+
+    //query insert data
+    $queryinput = "UPDATE kategori_produk SET 
+                    ID_Kategori='$id_kategori', 
+                    Nama_Kategori='$nama_kategori'
+                    WHERE ID_Kategori='$id_kategori'
+                    ";
+    mysqli_query($conn, $queryinput);
+
     return mysqli_affected_rows($conn);
 }
 
@@ -55,6 +91,7 @@ function tambahProduk($produk)
 {
     global $conn;
     //ambil data dari tiap elemen form
+    $ID_Kategori = htmlspecialchars($produk["ID_Kategori"]);
     $Nama_produk = htmlspecialchars($produk["Nama_Produk"]);
     $Ketahanan_produk = htmlspecialchars($produk["Ketahanan_Produk"]);
     $Harga = htmlspecialchars($produk["Harga"]);
@@ -66,16 +103,85 @@ function tambahProduk($produk)
     }
 
     //query insert data
-    $inputProduk = "INSERT INTO produk VALUES ('', '$Nama_produk', '$Ketahanan_produk', '$Harga', '$Keterangan', '$Gambar')";
+    $inputProduk = "INSERT INTO produk VALUES ('', 
+                                               '$ID_Kategori',
+                                               '$Nama_produk', 
+                                               '$Ketahanan_produk', 
+                                               '$Harga', 
+                                               '', 
+                                               '', 
+                                               '$Keterangan', 
+                                               '', 
+                                               '', 
+                                               '', 
+                                               '$Gambar')";
     mysqli_query($conn, $inputProduk);
 
     return mysqli_affected_rows($conn);
 }
+
+function promosiProduk($produk)
+{
+    global $conn;
+    //ambil data dari tiap elemen form
+    $Nama_produk = htmlspecialchars($produk["Nama_Produk"]);
+    $Harga = htmlspecialchars($produk["Harga"]);
+    $Promo = htmlspecialchars($produk["Promo"]);
+    $Tgl_Promo = htmlspecialchars($produk["Tgl_Promo"]);
+    $Ketahanan_Produk = htmlspecialchars($produk["Ketahanan_Produk"]);
+    $Keterangan = htmlspecialchars($produk["Keterangan"]);
+    $Gambar = htmlspecialchars($produk["gambarLama"]);
+
+    //query ubah data
+    $ubahproduk = "INSERT INTO produk VALUES ('', 
+                                              'KPC002',
+                                              '$Nama_produk', 
+                                              '$Ketahanan_Produk',
+                                              '$Harga', 
+                                              '$Promo', 
+                                              '$Tgl_Promo', 
+                                              '$Keterangan', 
+                                              '', 
+                                              '', 
+                                              '', 
+                                              '$Gambar')";
+    mysqli_query($conn, $ubahproduk);
+    return mysqli_affected_rows($conn);
+}
+
+//Produk
+function tambahPaket($produkpaket)
+{
+    global $conn;
+    //ambil data dari tiap elemen form
+    $ID_Kategori = htmlspecialchars($produkpaket["ID_Kategori"]);
+    $Nama_produk = htmlspecialchars($produkpaket["Nama_Produk"]);
+    $Ketahanan_produk = htmlspecialchars($produkpaket["Ketahanan_Produk"]);
+    $Harga = htmlspecialchars($produkpaket["Harga"]);
+    $Paket_A = htmlspecialchars($produkpaket["Paket_A"]);
+    $Paket_B = htmlspecialchars($produkpaket["Paket_B"]);
+    $Paket_C = htmlspecialchars($produkpaket["Paket_C"]);
+    $Keterangan = htmlspecialchars($produkpaket["Keterangan"]);
+    //upload gambar
+    $Gambar = uploadGambar();
+    if (!$Gambar) {
+        return false;
+    }
+
+    //query insert data
+    $inputProduk = "INSERT INTO produk VALUES ('', 'KPC001','$Nama_produk', '$Ketahanan_produk', '$Harga', '', '', '$Keterangan', '$Paket_A', '$Paket_B', '$Paket_C', '$Gambar')";
+    mysqli_query($conn, $inputProduk);
+
+    return mysqli_affected_rows($conn);
+}
+
+
 function ubahProduk($produk)
 {
     global $conn;
     //ambil data dari tiap elemen form
     $ID_Produk = htmlspecialchars($produk["ID_Produk"]);
+    $ID_Kategori = htmlspecialchars($produk["ID_Kategori"]);
     $Nama_produk = htmlspecialchars($produk["Nama_Produk"]);
     $Ketahanan_produk = htmlspecialchars($produk["Ketahanan_Produk"]);
     $Harga = htmlspecialchars($produk["Harga"]);
@@ -91,18 +197,17 @@ function ubahProduk($produk)
         $Gambar = uploadGambar();
     }
     //query ubah data
-    $ubahproduk = "UPDATE produk SET
+    $ubahproduk = "UPDATE produk, kategori_produk SET
                     produk.Nama_Produk = '$Nama_produk', 
                     produk.Gambar = '$Gambar', 
                     produk.Ketahanan_Produk = '$Ketahanan_produk',
                     produk.Harga = $Harga, 
                     produk.Keterangan = '$Keterangan' 
-                    WHERE produk.ID_Produk = $ID_Produk";
+                    WHERE  produk.ID_Kategori = kategori_produk.ID_Kategori
+                    AND produk.ID_Produk = $ID_Produk";
     mysqli_query($conn, $ubahproduk);
     return mysqli_affected_rows($conn);
 }
-
-
 // Rekening
 function tambahRekening($rek)
 {
@@ -200,13 +305,16 @@ function ubahPesanan($pesanan)
     $Status = htmlspecialchars($pesanan["status"]);
     $Biaya_pengiriman = htmlspecialchars($pesanan["Biaya_pengiriman"]);
     $Total_pesanan = htmlspecialchars($pesanan["Total_pesanan"]);
-    $Total_order = $Total_pesanan + $Biaya_pengiriman;
+    $Diskon_Pesanan = htmlspecialchars($pesanan["Diskon_Pesanan"]);
+    $Diskon = $Total_pesanan * $Diskon_Pesanan / 100;
+    $Total_order = ($Total_pesanan - $Diskon) + $Biaya_pengiriman;
     //query ubah data
     $ubahproduk = "UPDATE pesanan SET
                     Tgl_Kirim = '$Tgl_Kirim',
                     Tgl_Pesan = '$Tgl_Pesan',
                     Waktu_Kirim = '$Waktu_Kirim',
                     Catatan = '$Catatan', 
+                    Diskon_Pesanan = '$Diskon_Pesanan', 
                     status = '$Status',
                     Biaya_pengiriman = '$Biaya_pengiriman', 
                     Total_Order = '$Total_order'
@@ -276,4 +384,35 @@ function ubahPembayaran($pembayaran)
     }
 
     return mysqli_affected_rows($conn);
+}
+
+// login
+if (isset($_POST['loginadmin'])) {
+    $username = $_POST['ID_Pelanggan'];
+    $password = $_POST['Password'];
+
+    $cekuser = mysqli_query($conn, "SELECT * FROM pelanggan WHERE ID_Pelanggan = '$username' AND Password='$password'");
+    $hitung = mysqli_num_rows($cekuser);
+
+    if ($hitung > 0) {
+        // kalau data ditemukan
+        $ambildatarole = mysqli_fetch_array($cekuser);
+        $role = $ambildatarole['role'];
+        if ($role == 'admin') {
+            $_SESSION['log'] = 'Logged';
+            $_SESSION['roleadmin'] = 'Admin';
+            header('location:Admin/Dashboard.php');
+        } elseif ($role == 'pemilik') {
+            $_SESSION['log'] = 'Logged';
+            $_SESSION['rolepemilik'] = 'Pemilik';
+            header('location:Pemilik/Dashboard.php');
+        } elseif ($role == 'user') {
+            $_SESSION['log'] = 'Logged';
+            $_SESSION['roleuser'] = 'User';
+            $_SESSION["ID_Pelanggan"] = $username;
+            header('location:Homepage.php');
+        } else {
+            $error = true;
+        }
+    }
 }

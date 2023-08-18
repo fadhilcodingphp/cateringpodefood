@@ -33,7 +33,7 @@ if (isset($_POST['btnTampil'])) {
             <ol class="breadcrumb">
                <li class="breadcrumb-item"><a href="Dashboard.php">Home</a></li>
                <li class="breadcrumb-item"><a href="#">Laporan</a></li>
-               <li class="breadcrumb-item active">Pesta Pernikahan</li>
+               <li class="breadcrumb-item active">Catering Pesta Pernikahan</li>
             </ol>
          </nav>
       </div>
@@ -43,8 +43,21 @@ if (isset($_POST['btnTampil'])) {
             <div class="col-lg-12">
                <div class="card">
                   <div class="card-body">
-                     <h5 class="card-title">Laporan Pesta Pernikahan</h5>
-                     <a class="btn btn-primary" href="LaporanExcel.php?awal=<?= $tglAwal; ?> &&akhir=<?= $tglAkhir; ?>" target="_blank" alt="Edit Data"> <i class="ri-download-2-fill"></i> Download Excel</a>
+                     <h5 class="card-title">Laporan Pesanan Catering Pesta Pernikahan Periode tanggal <b><?= ($tglAwal); ?></b> s/d <b><?= ($tglAkhir); ?></b></h5>
+                     <form action="" method="post" name="laporan">
+                        <div class="row">
+                           <div class="col-lg-3">
+                              <input name="txtTglAwal" type="date" class="form-control" value="<?= $awalTgl ?>">
+                           </div>
+                           <div class="col-lg-3">
+                              <input name="txtTglAkhir" type="date" class="form-control" value="<?= $akhirTgl ?>">
+                           </div>
+                           <div class="col-lg-3">
+                              <input name="btnTampil" type="submit" class="btn btn-primary" value="Tampilkan">
+                           </div>
+                        </div>
+                     </form>
+                     <a class="btn btn-primary mt-2" href="LaporanPPExcel.php?sqlPeriode=<?= $sqlPeriode; ?>" target="_blank" alt="Edit Data"> <i class="ri-download-2-fill"></i> Download Excel</a>
                      <table class="table datatable">
                         <thead>
                            <tr>
@@ -65,7 +78,7 @@ if (isset($_POST['btnTampil'])) {
                              INNER JOIN pembayaran ON pesanan.ID_Pesanan = pembayaran.ID_Pesanan
                              INNER JOIN produk_item ON pesanan.ID_Pesanan = produk_item.ID_Pesanan 
                              INNER JOIN produk ON produk_item.ID_Produk = produk.ID_Produk
-                             INNER JOIN pelanggan ON pesanan.ID_Pelanggan = pelanggan.ID_Pelanggan WHERE pesanan.Jenis_Acara='Pesta Pernikahan'") ?>
+                             INNER JOIN pelanggan ON pesanan.ID_Pelanggan = pelanggan.ID_Pelanggan WHERE pesanan.Jenis_Acara='Pesta Pernikahan' $sqlPeriode ORDER BY pesanan.Tgl_Pesan ASC") ?>
                            <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
                               <tr>
                                  <td><?= $i ?></td>

@@ -1,5 +1,5 @@
 <?php
-if (!isset($_SESSION['roleadmin'])) {
+if (!isset($_SESSION['rolepemilik'])) {
     header("Location: ../Login.php");
     exit;
 }
@@ -31,7 +31,7 @@ if (!isset($_SESSION['roleadmin'])) {
     <div class="sidebar">
         <div class="logo-details">
             <img src="../img/podefood.jpg" alt="" style="width: 40px; margin-left: 17px;">
-            <span class="logo_name">Admin</span>
+            <span class="logo_name">Pemilik</span>
         </div>
         <ul class="nav-links">
             <li>
@@ -39,66 +39,6 @@ if (!isset($_SESSION['roleadmin'])) {
                     <i class="bi bi-grid" style="margin-top: 26px;"></i>
                     <span class="link_name">Dashboard</span>
                 </a>
-            </li>
-            <li>
-                <div class="iocn-link" style="margin-top: -25px;">
-                    <a href="Kategori.php">
-                        <i class="bi bi-card-list" style="margin-top: 26px;"></i>
-                        <span class="link_name">Kategori Menu</span>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="iocn-link" style="margin-top: -25px;">
-                    <a href="Produk.php">
-                        <i class="bi bi-cart-fill" style="margin-top: 26px;"></i>
-                        <span class="link_name">Produk</span>
-                    </a>
-                    <i class='bx bxs-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Produk</a></li>
-                    <?php $ambil = mysqli_query($conn, "SELECT * FROM kategori_produk WHERE ID > 2"); ?>
-                    <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
-                        <li><a href="ProdukKategoriDetail.php?id=<?= $pecah['ID_Kategori']; ?>"><?= $pecah['Nama_Kategori']; ?></a></li>
-                    <?php } ?>
-                </ul>
-            </li>
-            <li style="margin-top: -25px;">
-                <a href="Pesanan.php">
-                    <i class="bi bi-cart-check-fill" style="margin-top: 26px;"></i>
-                    <span class="link_name">Pesanan</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Pesanan</a></li>
-                </ul>
-            </li>
-            <li style="margin-top: -25px;">
-                <a href="Pembayaran.php">
-                    <i class="bi bi-cash" style="margin-top: 26px;"></i>
-                    <span class="link_name">Pembayaran</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Pembayaran</a></li>
-                </ul>
-            </li>
-            <li style="margin-top: -25px;">
-                <a href="Pelanggan.php">
-                    <i class="bi bi-person-fill" style="margin-top: 26px;"></i>
-                    <span class="link_name">Pelanggan</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Pelanggan</a></li>
-                </ul>
-            </li>
-            <li style="margin-top: -25px;">
-                <a href="Rekening.php">
-                    <i class="bi bi-credit-card" style="margin-top: 26px;"></i>
-                    <span class="link_name">Rekening</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Rekening</a></li>
-                </ul>
             </li>
             <li style="margin-top: -25px;">
                 <div class="iocn-link">

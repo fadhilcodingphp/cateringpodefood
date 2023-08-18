@@ -1,6 +1,6 @@
 <?php
 require 'AdminFunction.php';
-if (!isset($_SESSION["roleadmin"])) {
+if (!isset($_SESSION["rolepemilik"])) {
    header("Location: ../login.php");
    exit;
 }
@@ -33,7 +33,7 @@ if (isset($_POST['btnTampil'])) {
             <ol class="breadcrumb">
                <li class="breadcrumb-item"><a href="Dashboard.php">Home</a></li>
                <li class="breadcrumb-item"><a href="#">Laporan</a></li>
-               <li class="breadcrumb-item active">Catering Acara Syukuran</li>
+               <li class="breadcrumb-item active">Catering Konsumsi Karyawan</li>
             </ol>
          </nav>
       </div>
@@ -43,7 +43,7 @@ if (isset($_POST['btnTampil'])) {
             <div class="col-lg-12">
                <div class="card">
                   <div class="card-body">
-                     <h5 class="card-title">Laporan Pesanan Catering Acara Syukuran Periode tanggal <b><?= ($tglAwal); ?></b> s/d <b><?= ($tglAkhir); ?></b></h5>
+                     <h5 class="card-title">Laporan Pesanan Catering Konsumsi Karyawan Periode tanggal <b><?= ($tglAwal); ?></b> s/d <b><?= ($tglAkhir); ?></b></h5>
                      <form action="" method="post" name="laporan">
                         <div class="row">
                            <div class="col-lg-3">
@@ -57,7 +57,7 @@ if (isset($_POST['btnTampil'])) {
                            </div>
                         </div>
                      </form>
-                     <a class="btn btn-primary mt-2" href="LaporanSyukuranExcel.php?sqlPeriode=<?= $sqlPeriode; ?>" target="_blank" alt="Edit Data"> <i class="ri-download-2-fill"></i> Download Excel</a>
+                     <a class="btn btn-primary mt-2" href="LaporanKKExcel.php?sqlPeriode=<?= $sqlPeriode; ?>" target="_blank" alt="Edit Data"> <i class="ri-download-2-fill"></i> Download Excel</a>
                      <table class="table datatable">
                         <thead>
                            <tr>
@@ -70,7 +70,6 @@ if (isset($_POST['btnTampil'])) {
                               <th scope="col">Harga Produk</th>
                               <th scope="col">Jumlah</th>
                               <th scope="col">Total</th>
-                              <th scope="col">Aksi</th>
                            </tr>
                         </thead>
                         <tbody>
@@ -78,7 +77,7 @@ if (isset($_POST['btnTampil'])) {
                              INNER JOIN pembayaran ON pesanan.ID_Pesanan = pembayaran.ID_Pesanan
                              INNER JOIN produk_item ON pesanan.ID_Pesanan = produk_item.ID_Pesanan 
                              INNER JOIN produk ON produk_item.ID_Produk = produk.ID_Produk
-                             INNER JOIN pelanggan ON pesanan.ID_Pelanggan = pelanggan.ID_Pelanggan WHERE pesanan.Jenis_Acara='Syukuran' $sqlPeriode ORDER BY pesanan.Tgl_Pesan ASC") ?>
+                             INNER JOIN pelanggan ON pesanan.ID_Pelanggan = pelanggan.ID_Pelanggan WHERE pesanan.Jenis_Acara='Konsumsi Karyawan' $sqlPeriode ORDER BY pesanan.Tgl_Pesan ASC") ?>
                            <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
                               <tr>
                                  <td><?= $i ?></td>
@@ -106,12 +105,9 @@ if (isset($_POST['btnTampil'])) {
                                  <td scope="row"><?php echo 'Rp. ' . number_format($pecah['Harga'], 2, ',', '.'); ?></td>
                                  <td scope="row"><?php echo $pecah['Jumlah_Barang']; ?></td>
                                  <td scope="row"><?php echo 'Rp. ' . number_format($pecah['Total_pesanan'] + $pecah['Biaya_pengiriman'] - $pecah['Diskon_Pesanan'], 2, ',', '.'); ?></td>
-                                 <td>
-                                    <a class="btn btn-info" href="PesananDetail.php?id=<?= $pecah['ID_Pesanan']; ?>">Detail</a>
-                                 </td>
                               </tr>
                            <?php } ?>
-                           <?php $total_Penjualan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(Total_pesanan) AS total FROM pesanan WHERE Jenis_Acara = 'Syukuran'"))["total"]; ?>
+                           <?php $total_Penjualan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(Total_pesanan) AS total FROM pesanan WHERE Jenis_Acara = 'Konsumsi Karyawan'"))["total"]; ?>
                            <tr>
                               <td></td>
                               <td colspan="3">Total Penjualan Pode Food : </td>

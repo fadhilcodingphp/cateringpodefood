@@ -56,7 +56,7 @@ if (isset($_POST['btnTampil'])) {
                                     </div>
                                 </div>
                             </form>
-                            <a class="btn btn-primary mt-2" href="LaporanExcel.php?awal=<?= $tglAwal; ?> &&akhir=<?= $tglAkhir; ?>" target="_blank" alt="Edit Data"> <i class="ri-download-2-fill"></i> Download Excel</a>
+                            <a class="btn btn-primary mt-2" href="LaporanExcel.php?sqlPeriode=<?= $sqlPeriode; ?>" target="_blank" alt="Edit Data"> <i class="ri-download-2-fill"></i> Download Excel</a>
                             <table class="table datatable">
                                 <thead>
                                     <tr>
