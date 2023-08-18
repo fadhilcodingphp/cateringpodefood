@@ -64,7 +64,7 @@ if (!isset($_SESSION["roleuser"])) {
                       <?php echo $pecah['Diskon_Pesanan']; ?>%
                     </td>
                     <td>
-                      <?php echo 'Rp. ' . number_format($pecah['Total_Order'], 2, ',', '.'); ?>
+                      <?php echo 'Rp. ' . number_format($pecah['Total_pesanan'] + $pecah['Biaya_pengiriman'] - $pecah['Diskon_Pesanan'], 2, ',', '.'); ?>
                     </td>
                     <td>
                       <?php

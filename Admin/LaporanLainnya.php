@@ -98,7 +98,7 @@ if (isset($_POST['btnTampil'])) {
                                  </td>
                               </tr>
                            <?php } ?>
-                           <?php $total_Penjualan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(Total_Prodit) AS total FROM produk_item"))["total"]; ?>
+                           <?php $total_Penjualan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(Total_pesanan) AS total FROM pesanan WHERE Jenis_Acara = 'Lainnya'"))["total"]; ?>
                            <tr>
                               <td></td>
                               <td colspan="3">Total Penjualan Pode Food : </td>

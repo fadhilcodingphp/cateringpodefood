@@ -65,7 +65,7 @@ if (!isset($_SESSION["roleadmin"])) {
                                     }
                                     ?>
                                  </td>
-                                 <td scope="row"><?php echo 'Rp. ' . number_format($pecah['Total_Order'], 2, ',', '.'); ?></td>
+                                 <td scope="row"><?php echo 'Rp. ' . number_format($pecah['Total_pesanan'] + $pecah['Biaya_pengiriman'] - $pecah['Diskon_Pesanan'], 2, ',', '.'); ?></td>
                                  <td scope="row"><?php echo $pecah['Nama_Platform']; ?></td>
                                  <td>
                                     <a class="btn btn-info" href="PembayaranDetail.php?id=<?= $pecah['ID_Pesanan']; ?>">Detail</a>

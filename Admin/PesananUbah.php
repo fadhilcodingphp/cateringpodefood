@@ -167,6 +167,7 @@ WHERE pesanan.ID_Pesanan = $id")[0];
                                         <div class="col-lg-3 col-md-4 label">Status Pembayaran</div>
                                         <div class="col-lg-9 col-md-8">
                                             <?php
+                                            $bayar = $pesanan['status_Pembayaran'];
                                             if ($bayar == "LUNAS") {
                                                 echo "<span class='badge bg-danger'> <h6><b> $bayar </b></h6> </span>";
                                             } elseif ($bayar == "Transfer Bank") {
