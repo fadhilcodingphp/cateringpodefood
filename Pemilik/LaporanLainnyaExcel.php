@@ -42,14 +42,16 @@ header("Content-Disposition: attachment; filename=Laporan Penjualan Pode Food.xl
                <td scope="row"><?php echo $pecah['Institusi']; ?></td>
                <td scope="row"><?php echo $pecah['Nama_Produk']; ?></td>
                <td scope="row"><?php echo $pecah['Jumlah_Barang']; ?></td>
-               <td scope="row"><?php echo 'Rp. ' . number_format($pecah['Total_pesanan'] + $pecah['Biaya_pengiriman'] - $pecah['Diskon_Pesanan'], 2, ',', '.'); ?></td>
+               <td scope="row"><?php echo 'Rp. ' . number_format($pecah['Total_pesanan'] - $pecah['Diskon_Pesanan'], 2, ',', '.'); ?></td>
             </tr>
             <?php $i++; ?>
          <?php } ?>
-         <?php $total_Penjualan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(Total_pesanan) AS total FROM pesanan WHERE Jenis_Acara = 'Lainnya'"))["total"]; ?>
+         <?php $total_Penjualan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(Total_pesanan) AS total FROM pesanan WHERE Jenis_Acara = 'Lainnya' $sqlPeriode"))["total"]; ?>
          <tr>
             <td></td>
             <td colspan="3">Total Penjualan Pode Food : </td>
+            <td></td>
+            <td></td>
             <td></td>
             <td></td>
             <td><b>Rp.<?php echo number_format($total_Penjualan, 2, ',', '.') ?></b></td>

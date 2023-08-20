@@ -62,7 +62,7 @@ $ubahRek = query("SELECT * FROM rekening WHERE ID_Rekening = '$id_Rekening'")[0]
                      <input type="text" name="Nama_Platform" class="form-control" id="Nama_Platform" value="<?= $ubahRek["Nama_Platform"] ?>" required>
                   </div>
                   <div class="col-12">
-                     <label for="Nama_Rek" class="form-label">Nama Penerima</label>
+                     <label for="Nama_Rek" class="form-label">Nama Pemilik</label>
                      <input type="text" name="Nama_Rek" class="form-control" id="Nama_Rek" value="<?= $ubahRek["Nama_Rek"] ?>" required>
                   </div>
                   <div class="col-12">

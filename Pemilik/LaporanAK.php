@@ -104,13 +104,14 @@ if (isset($_POST['btnTampil'])) {
                                  <td scope="row"><?php echo $pecah['Nama_Produk']; ?></td>
                                  <td scope="row"><?php echo 'Rp. ' . number_format($pecah['Harga'], 2, ',', '.'); ?></td>
                                  <td scope="row"><?php echo $pecah['Jumlah_Barang']; ?></td>
-                                 <td scope="row"><?php echo 'Rp. ' . number_format($pecah['Total_pesanan'] + $pecah['Biaya_pengiriman'] - $pecah['Diskon_Pesanan'], 2, ',', '.'); ?></td>
+                                 <td scope="row"><?php echo 'Rp. ' . number_format($pecah['Total_pesanan'] - $pecah['Diskon_Pesanan'], 2, ',', '.'); ?></td>
                               </tr>
                            <?php } ?>
-                           <?php $total_Penjualan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(Total_pesanan) AS total FROM pesanan WHERE Jenis_Acara = 'Acara Kantoran'"))["total"]; ?>
+                           <?php $total_Penjualan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(Total_pesanan) AS total FROM pesanan WHERE Jenis_Acara = 'Acara Kantoran' $sqlPeriode"))["total"]; ?>
                            <tr>
                               <td></td>
                               <td colspan="3">Total Penjualan Pode Food : </td>
+                              <td></td>
                               <td></td>
                               <td></td>
                               <td></td>

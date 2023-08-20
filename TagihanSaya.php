@@ -71,13 +71,13 @@ if (!isset($_SESSION["roleuser"])) {
                       $bayar = $pecah['status_Pembayaran'];
                       $status = $pecah['status'];
                       if ($bayar == "LUNAS") {
+                        echo "<span class='badge bg-danger'> <h6><b> $bayar </b></h6> </span>";
+                      } elseif ($bayar == "Transfer Bank") {
                         echo "<span class='badge bg-success'> <h6><b> $bayar </b></h6> </span>";
-                      } elseif ($bayar == "DP 50% dan COD") {
+                      } elseif ($bayar == "COD (Bayar di Tempat)") {
                         echo "<span class='badge bg-warning'> <h6><b> $bayar </b></h6> </span>";
                       } elseif ($bayar == "Belum Bayar") {
                         echo "<span class='badge bg-danger'> <h6><b> $bayar </b></h6> </span>";
-                      } elseif ($status == "Menunggu Pembayaran") {
-                        echo "<span class='badge bg-danger'> <h6><b> $status </b></h6> </span>";
                       }
                       ?>
                     </td>

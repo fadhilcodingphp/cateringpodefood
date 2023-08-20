@@ -105,16 +105,17 @@ if (isset($_POST['btnTampil'])) {
                                  <td scope="row"><?php echo $pecah['Nama_Produk']; ?></td>
                                  <td scope="row"><?php echo 'Rp. ' . number_format($pecah['Harga'], 2, ',', '.'); ?></td>
                                  <td scope="row"><?php echo $pecah['Jumlah_Barang']; ?></td>
-                                 <td scope="row"><?php echo 'Rp. ' . number_format($pecah['Total_pesanan'] + $pecah['Biaya_pengiriman'] - $pecah['Diskon_Pesanan'], 2, ',', '.'); ?></td>
+                                 <td scope="row"><?php echo 'Rp. ' . number_format($pecah['Total_pesanan'] - $pecah['Diskon_Pesanan'], 2, ',', '.'); ?></td>
                                  <td>
                                     <a class="btn btn-info" href="PesananDetail.php?id=<?= $pecah['ID_Pesanan']; ?>">Detail</a>
                                  </td>
                               </tr>
                            <?php } ?>
-                           <?php $total_Penjualan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(Total_pesanan) AS total FROM pesanan WHERE Jenis_Acara = 'Syukuran'"))["total"]; ?>
+                           <?php $total_Penjualan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(Total_pesanan) AS total FROM pesanan WHERE Jenis_Acara = 'Syukuran' $sqlPeriode"))["total"]; ?>
                            <tr>
                               <td></td>
                               <td colspan="3">Total Penjualan Pode Food : </td>
+                              <td></td>
                               <td></td>
                               <td></td>
                               <td></td>

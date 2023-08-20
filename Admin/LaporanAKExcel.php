@@ -30,7 +30,7 @@ header("Content-Disposition: attachment; filename=Laporan Penjualan Pode Food.xl
                              INNER JOIN pembayaran ON pesanan.ID_Pesanan = pembayaran.ID_Pesanan
                              INNER JOIN produk_item ON pesanan.ID_Pesanan = produk_item.ID_Pesanan 
                              INNER JOIN produk ON produk_item.ID_Produk = produk.ID_Produk
-                             INNER JOIN pelanggan ON pesanan.ID_Pelanggan = pelanggan.ID_Pelanggan WHERE Jenis_Acara = 'Acara Kantoran' ORDER BY pesanan.Tgl_Pesan ASC
+                             INNER JOIN pelanggan ON pesanan.ID_Pelanggan = pelanggan.ID_Pelanggan $sqlPeriode WHERE Jenis_Acara = 'Acara Kantoran' ORDER BY pesanan.Tgl_Pesan ASC
                              ") ?>
          <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
             <tr>
@@ -42,14 +42,16 @@ header("Content-Disposition: attachment; filename=Laporan Penjualan Pode Food.xl
                <td scope="row"><?php echo $pecah['Institusi']; ?></td>
                <td scope="row"><?php echo $pecah['Nama_Produk']; ?></td>
                <td scope="row"><?php echo $pecah['Jumlah_Barang']; ?></td>
-               <td scope="row"><?php echo 'Rp. ' . number_format($pecah['Total_pesanan'] + $pecah['Biaya_pengiriman'] - $pecah['Diskon_Pesanan'], 2, ',', '.'); ?></td>
+               <td scope="row"><?php echo 'Rp. ' . number_format($pecah['Total_pesanan'] - $pecah['Diskon_Pesanan'], 2, ',', '.'); ?></td>
             </tr>
             <?php $i++; ?>
          <?php } ?>
-         <?php $total_Penjualan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(Total_pesanan) AS total FROM pesanan WHERE Jenis_Acara = 'Acara Kantoran'"))["total"]; ?>
+         <?php $total_Penjualan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(Total_pesanan) AS total FROM pesanan WHERE Jenis_Acara = 'Acara Kantoran' $sqlPeriode"))["total"]; ?>
          <tr>
             <td></td>
             <td colspan="3">Total Penjualan Pode Food : </td>
+            <td></td>
+            <td></td>
             <td></td>
             <td></td>
             <td><b>Rp.<?php echo number_format($total_Penjualan, 2, ',', '.') ?></b></td>

@@ -11,7 +11,7 @@ if (isset($_POST["ubahProduk"])) {
       echo "
         <script>
         alert('Data berhasil diubah');
-        document.location.href='ProdukKategoriDetail.php?id=KPC003';
+        document.location.href='Produk.php';
         </script>
         ";
    } else {

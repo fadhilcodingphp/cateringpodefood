@@ -38,7 +38,7 @@ if (!isset($_SESSION["roleadmin"])) {
                               <th scope="col">No.</th>
                               <th scope="col">ID Rekening</th>
                               <th scope="col">Nama Bank/Platform</th>
-                              <th scope="col">Nama Penerima</th>
+                              <th scope="col">Nama Pemilik</th>
                               <th scope="col">Nomor Rekening/Platform</th>
                               <th scope="col">Aksi</th>
                            </tr>

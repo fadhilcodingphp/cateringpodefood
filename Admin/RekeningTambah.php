@@ -58,7 +58,7 @@ if (isset($_POST["tambahRekening"])) {
                      <input type="text" name="Nama_Platform" class="form-control" id="Nama_Platform" required>
                   </div>
                   <div class="col-12">
-                     <label for="Nama_Rek" class="form-label">Nama Penerima</label>
+                     <label for="Nama_Rek" class="form-label">Nama Pemilik</label>
                      <input type="text" name="Nama_Rek" class="form-control" id="Nama_Rek" required>
                   </div>
                   <div class="col-12">
