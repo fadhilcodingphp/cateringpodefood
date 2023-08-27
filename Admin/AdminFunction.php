@@ -209,6 +209,45 @@ function ubahProduk($produk)
     mysqli_query($conn, $ubahproduk);
     return mysqli_affected_rows($conn);
 }
+
+function ubahPaket($produk)
+{
+    global $conn;
+    //ambil data dari tiap elemen form
+    $ID_Produk = htmlspecialchars($produk["ID_Produk"]);
+    $Nama_produk = htmlspecialchars($produk["Nama_Produk"]);
+    $Paket_A = htmlspecialchars($produk["Paket_A"]);
+    $Paket_B = htmlspecialchars($produk["Paket_B"]);
+    $Paket_C = htmlspecialchars($produk["Paket_C"]);
+    $Ketahanan_produk = htmlspecialchars($produk["Ketahanan_Produk"]);
+    $Harga = htmlspecialchars($produk["Harga"]);
+    $Keterangan = htmlspecialchars($produk["Keterangan"]);
+    // $Gambar = htmlspecialchars($produk["Gambar"]);
+    $gambarLama = htmlspecialchars($produk["gambarLama"]);
+
+    //cek apakah user pilig gambar baru atau tidak 
+    if ($_FILES['Gambar']['error'] === 4) {
+        $Gambar = $gambarLama;
+    } else {
+        //upload gambar
+        $Gambar = uploadGambar();
+    }
+    //query ubah data
+    $ubahproduk = "UPDATE produk, kategori_produk SET
+                    produk.Nama_Produk = '$Nama_produk', 
+                    produk.Paket_A = '$Paket_A', 
+                    produk.Paket_B = '$Paket_B', 
+                    produk.Paket_C = '$Paket_C', 
+                    produk.Gambar = '$Gambar', 
+                    produk.Ketahanan_Produk = '$Ketahanan_produk',
+                    produk.Harga = $Harga, 
+                    produk.Keterangan = '$Keterangan' 
+                    WHERE  produk.ID_Kategori = kategori_produk.ID_Kategori
+                    AND produk.ID_Produk = $ID_Produk";
+    mysqli_query($conn, $ubahproduk);
+    return mysqli_affected_rows($conn);
+}
+
 // Rekening
 function tambahRekening($rek)
 {
