@@ -55,9 +55,9 @@ require 'custFunction.php';
     </div>
   </nav>
   <!-- Navbar End -->
-
-
-  <div class="hero" style="background-image: url('img/logo.png'); margin-top: 5px;"></div>
+  <div class="awal text-center">
+    <img src="img/logo.png" alt="" style="width: 800px;">
+  </div>
   <br>
   <div id="caraPesan" class="container-xxl py-5">
     <div class="container">

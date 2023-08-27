@@ -17,7 +17,7 @@ if (!isset($_SESSION["roleuser"])) {
   ?>
 
   <!-- Header Start -->
-  <div style="width:60%;" class="container">
+  <div style="width:40%;" class="container">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>

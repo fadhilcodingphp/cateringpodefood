@@ -145,8 +145,6 @@ function TambahPesanan($tambahPesanan)
     $Status = htmlspecialchars($tambahPesanan["status"]);
     $link_Lokasi = htmlspecialchars($tambahPesanan["link_Lokasi"]);
     $Catatan = htmlspecialchars($tambahPesanan["Catatan"]);
-    $Jarak = htmlspecialchars($tambahPesanan["jarak"]);
-    $Biaya_Pengiriman = $Jarak * 2600;
 
 
     //query insert data
@@ -164,8 +162,8 @@ function TambahPesanan($tambahPesanan)
                                            $total,
                                            '', 
                                            '$Status',
-                                           '$Jarak', 
-                                           '$Biaya_Pengiriman',
+                                           '', 
+                                           '',
                                            '' )";
     mysqli_query($conn, $input);
 
