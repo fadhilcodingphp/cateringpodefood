@@ -46,7 +46,7 @@ if (!isset($_SESSION["roleadmin"])) {
                            </tr>
                         </thead>
                         <tbody>
-                           <?php $ambil = mysqli_query($conn, "SELECT * FROM pelanggan"); ?>
+                           <?php $ambil = mysqli_query($conn, "SELECT * FROM pelanggan WHERE id > 2"); ?>
                            <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
                               <tr>
                                  <td><?= $i ?></td>

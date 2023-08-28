@@ -87,8 +87,8 @@ if (!isset($_SESSION["roleuser"])) {
             <p>
               <img class="img-fluid border border-1 p-2 mx-auto mb-4" src="assets/img/<?php echo $pecah['Gambar']; ?>" style="width: 100px; height: 100px" />
             <h3><?php echo $pecah['Nama_Produk']; ?></h3>
-            <h5 style="text-decoration: line-through;"><?php echo 'Rp. ' . number_format($pecah['Harga'], 2, ',', '.'); ?></h5>
-            <h5>Sekarang Hanya : <?php echo 'Rp. ' . number_format($pecah['Promo'], 2, ',', '.'); ?></h5>
+            <h5 style="text-decoration: line-through;"><?php echo 'Rp. ' . number_format($pecah['Promo'], 2, ',', '.'); ?></h5>
+            <h5>Sekarang Hanya : <?php echo 'Rp. ' . number_format($pecah['Harga'], 2, ',', '.'); ?></h5>
             <h6>Berlaku Sampai : <?php echo $pecah['Tgl_Promo']; ?></h6>
             </p>
             <div>
@@ -134,54 +134,6 @@ if (!isset($_SESSION["roleuser"])) {
     </div>
   </div>
   <!-- About End -->
-
-  <!-- Contact Start -->
-  <div id="kontak" class="container-xxl py-4">
-    <div class="container">
-      <div class="row g-4 mb-5">
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-          <div class="h-100 bg-dark d-flex align-items-center p-5">
-            <div class="btn-lg-square bg-black flex-shrink-0">
-              <i class="fa fa-phone-alt text-primary"></i>
-            </div>
-            <div class="ms-4">
-              <p class="mb-2 text-light">
-                <span class="text-primary me-2">#</span>Telepon
-              </p>
-              <h5 class="text-light mb-0">082188289569</h5>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-          <div class="h-100 bg-dark d-flex align-items-center p-5">
-            <div class="btn-lg-square bg-black flex-shrink-0">
-              <i class="fa fa-whatsapp text-primary"></i>
-            </div>
-            <div class="ms-4">
-              <p class="mb-2 text-light">
-                <span class="text-primary me-2">#</span>Whatsapp
-              </p>
-              <h5 class="text-light mb-0">082188289569</h5>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-          <div class="h-100 bg-dark d-flex align-items-center p-5">
-            <div class="btn-lg-square bg-black flex-shrink-0">
-              <i class="fa fa-instagram text-primary"></i>
-            </div>
-            <div class="ms-4">
-              <p class="mb-2 text-light">
-                <span class="text-primary me-2">#</span>Instagram
-              </p>
-              <h5 class="text-light mb-0">PodeFoodMakassar</h5>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Contact End -->
 
   <!-- Cara Pesan -->
   <div id="caraPesan" class="container-xxl py-5">

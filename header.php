@@ -90,7 +90,7 @@
                         </div>
                     </div>
                     <a href="Home.php#caraPesan" class="nav-item nav-link">Panduan Pemesanan</a>
-                    <a href="Home.php#kontak" class="nav-item nav-link">Kontak</a>
+                    <a href="kontak.php" class="nav-item nav-link">Kontak</a>
                 </div>
                 <a href="Login.php" class="btn btn-primary">Login<i class="fa fa-arrow-right ms-3"></i></a>
             </div>
@@ -114,14 +114,14 @@
                         </a>
                         <div class="dropdown-menu rounded-0 rounded-bottom m-0">
                             <a href="MenuPaket.php" class="dropdown-item">Paket Catering</a>
-                            <?php $ambil = mysqli_query($conn, "SELECT * FROM kategori_produk WHERE ID > 2"); ?>
+                            <?php $ambil = mysqli_query($conn, "SELECT * FROM kategori_produk WHERE ID > 1"); ?>
                             <?php while ($pecah = mysqli_fetch_assoc($ambil)) { ?>
                                 <a href="MenuKategoriDetail.php?id=<?= $pecah['ID_Kategori']; ?>" class="dropdown-item"><?= $pecah['Nama_Kategori']; ?></a>
                             <?php } ?>
                         </div>
                     </div>
                     <a href="Homepage.php#caraPesan" class="nav-item nav-link">Panduan Pemesanan</a>
-                    <a href="Homepage.php#kontak" class="nav-item nav-link">Kontak</a>
+                    <a href="kontak.php" class="nav-item nav-link">Kontak</a>
                 </div>
 
                 <div class="navbar-nav ms-auto">

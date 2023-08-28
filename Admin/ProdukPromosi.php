@@ -80,12 +80,12 @@ $ubahProduk = query("SELECT * FROM produk, kategori_produk WHERE ID_Produk = '$I
                               <div class="col-md-8 col-lg-9"> <input name="Ketahanan_Produk" type="text" class="form-control" id="Ketahanan_Produk" value="<?= $ubahProduk['Ketahanan_Produk'] ?>" readonly></div>
                            </div>
                            <div class="row mb-3">
-                              <label for="Harga" class="col-md-4 col-lg-3 col-form-label">Harga Produk</label>
-                              <div class="col-md-8 col-lg-9"> <input name="Harga" type="text" class="form-control" id="Harga" value="<?= $ubahProduk['Harga'] ?>" readonly></div>
+                              <label for="Promo" class="col-md-4 col-lg-3 col-form-label">Harga Produk</label>
+                              <div class="col-md-8 col-lg-9"> <input name="Promo" type="text" class="form-control" id="Promo" value="<?= $ubahProduk['Harga'] ?>" readonly></div>
                            </div>
                            <div class="row mb-3">
-                              <label for="Promo" class="col-md-4 col-lg-3 col-form-label">Harga Promo</label>
-                              <div class="col-md-8 col-lg-9"> <input name="Promo" type="text" class="form-control" id="Promo" value="<?= $ubahProduk['Promo'] ?>" required></div>
+                              <label for="Harga" class="col-md-4 col-lg-3 col-form-label">Harga Promo</label>
+                              <div class="col-md-8 col-lg-9"> <input name="Harga" type="text" class="form-control" id="Harga" value="<?= $ubahProduk['Promo'] ?>" required></div>
                            </div>
                            <div class="row mb-3">
                               <label for="Tgl_Promo" class="col-md-4 col-lg-3 col-form-label">Batas Promo</label>
